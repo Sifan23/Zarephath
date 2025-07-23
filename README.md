@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+**🥘 Zarephath Nigerian Limited – Landing Page**
 
-## Getting Started
+Welcome to the official codebase for the **Zarephath Nigerian Limited** landing page — a professional web platform for showcasing products, collecting orders, and growing brand visibility online.
 
-First, run the development server:
+**This project is built with:**
 
-```bash
+- ✅ [Next.js](https://nextjs.org/)
+- ✅ [Tailwind CSS](https://tailwindcss.com/)
+- ✅ [TypeScript](https://www.typescriptlang.org/)
+- ✅ [shadcn/ui](https://ui.shadcn.com/)
+- ✅ [Zod + React Hook Form](https://react-hook-form.com/)
+
+
+** 👥 Contributors**
+
+Built with 💻 by:
+
+- **Mattia Lavai** – [GitHub](https://github.com/mattialavai) · Product & UI Design · Frontend Dev  
+- **Sifan** – [GitHub](https://github.com/Sifan23) · Frontend Dev .Frontend Setup · Repo Owner · Form Logic  
+
+ **🚀 Getting Started**
+
+Clone and run locally:
+
+bash
+git clone https://github.com/Sifan23/Zarephath.git
+cd Zarephath
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Open http://localhost:3000 to view it in your browser.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**📦 Folder Structure**
+csharp
+Copy
+Edit
+Zarephath/
+├── public/              # Static assets (icons, images, logo)
+├── app/ or pages/       # Route pages (landing, order form, thank you)
+├── components/          # UI blocks (Header, Hero, Footer, OrderForm, etc.)
+├── styles/              # Tailwind global styles
+├── lib/                 # (optional) Utils or helpers
+├── README.md            # Project overview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**💡 Features**
+🏠 Landing page introducing the company
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🛒 Product preview with images and descriptions
 
-## Learn More
+📝 Order form with validation and WhatsApp redirection
 
-To learn more about Next.js, take a look at the following resources:
+✅ Thank-you page for user confirmation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+📱 Fully responsive and mobile-friendly
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+🔐 Ready for deployment on Vercel or Netlify
 
-## Deploy on Vercel
+✅ To Do / Future Improvements
+ Admin dashboard (optional)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+ Connect to Google Sheets or Email API
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+ Live database order storage (optional)
+
+**🌍 Deployment**
+Deployed via:
+
+Vercel: https://vercel.com
+
+Netlify: https://netlify.com
+
+**📬 Contact**
+Want a landing page like this for your business?
+
+Contact Mattia or Sifan via WhatsApp or email. We design + build modern websites for small businesses and startups.
+
+📜 License
+This project is open source and available under the MIT License.
