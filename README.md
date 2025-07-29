@@ -34,12 +34,43 @@ csharp
 Copy
 Edit
 Zarephath/
-├── public/              # Static assets (icons, images, logo)
-├── app/ or pages/       # Route pages (landing, order form, thank you)
-├── components/          # UI blocks (Header, Hero, Footer, OrderForm, etc.)
-├── styles/              # Tailwind global styles
-├── lib/                 # (optional) Utils or helpers
-├── README.md            # Project overview
+├── public/                  # Static assets: images, logo, favicon, etc.
+│   └── assets/              # Organize image files, icons, etc.
+│       └── products/
+│       └── team/
+│       └── banners/
+
+├── app/                     # Next.js App Router (if using `app/` instead of `pages/`)
+│   ├── layout.tsx          # Global layout (header/footer)
+│   ├── page.tsx            # Homepage (landing)
+│   ├── order/              # Order form route
+│   └── thank-you/          # Thank you page after form submission
+
+├── components/             # Reusable UI components
+│   ├── ui/                 # shadcn/ui-based components (Button, Input, etc.)
+│   ├── layout/             # Header, Footer, NavBar, etc.
+│   ├── sections/           # Page-specific sections (Hero, Products, AboutUs)
+│   └── shared/             # Other shared widgets (Loader, Toasts, etc.)
+
+├── styles/                 # Global styles
+│   └── globals.css         # Tailwind base & custom styles
+
+├── lib/                    # Utility functions, API helpers, validators
+│   └── form.ts             # zod schema and react-hook-form logic
+│   └── utils.ts            # Formatters, constants
+
+├── config/                 # Environment-based settings (metadata, site config)
+│   └── site.ts             # Company name, description, social links, etc.
+
+├── types/                  # Global TypeScript interfaces & types
+│   └── index.d.ts
+
+├── .env.local              # Environment variables (never commit to GitHub)
+├── tailwind.config.ts
+├── tsconfig.json
+├── next.config.js
+├── package.json
+└── README.md               # Project overview and instructions
 
 **💡 Features**
 🏠 Landing page introducing the company
