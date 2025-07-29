@@ -11,7 +11,7 @@ Welcome to the official codebase for the **Zarephath Nigerian Limited** landing 
 - ✅ [Zod + React Hook Form](https://react-hook-form.com/)
 
 
-** 👥 Contributors**
+** 👥 Contributors*
 
 Built with 💻 by:
 
