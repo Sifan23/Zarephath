@@ -66,7 +66,7 @@ export default function Navbar() {
 
           {/* Order Now */}
           <Button asChild className="bg-green-700 hover:bg-green-800 text-white rounded-full px-5 py-2 text-sm">
-            <Link href="#contact">Order Now</Link>
+            <Link href="#products">Order Now</Link>
           </Button>
         </div>
 
@@ -99,7 +99,7 @@ export default function Navbar() {
             <li><a href="#contact" onClick={() => setIsOpen(false)} className={linkClass("contact")}>Contact</a></li>
             <li>
               <Button asChild className="w-full bg-[#05c069] hover:bg-[#049a50] text-white rounded-full py-2 text-sm mt-2">
-                <Link href="#contact" onClick={() => setIsOpen(false)} className="flex justify-center items-center gap-2">
+                <Link href="#products" onClick={() => setIsOpen(false)} className="flex justify-center items-center gap-2">
                   <ShoppingCart size={18} />
                   Order Now
                 </Link>

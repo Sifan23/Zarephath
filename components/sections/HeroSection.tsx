@@ -17,7 +17,7 @@ export default function HeroSection() {
           At Pauline’s Food Processing, we bring you premium-quality, locally sourced products — carefully packaged, NAFDAC & FDA approved, and crafted to meet the highest standards.
         </p>
         <Button
-          onClick={() => window.location.href = "#order"}
+          onClick={() => window.location.href = "#products"}
           className="bg-green-700 hover:bg-green-800 text-white px-6 py-6 rounded-full text-sm font-semibold"
         >
           Order Now →
