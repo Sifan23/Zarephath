@@ -2,64 +2,12 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import {
-  ShoppingCart,
-  Star,
-  X,
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react";
+import { ShoppingCart, Star, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
-
-const allProducts = [
-  {
-    id: 1,
-    name: "Delta Garri",
-    category: "Grains",
-    description: "High-quality Garri, processed and packaged for freshness.",
-    price: "Le 50",
-    rating: 4.5,
-    images: ["/assets/products/garri.svg", "/assets/products/garri2.svg"],
-  },
-  {
-    id: 2,
-    name: "Plantain Flour",
-    category: "Flours",
-    description: "Nutritious plantain flour, gluten-free and rich in fiber.",
-    price: "Le 35",
-    rating: 4,
-    images: ["/assets/products/plantian.svg"],
-  },
-  {
-    id: 3,
-    name: "Zarephath Palm Oil",
-    category: "Oils",
-    description: "Pure red palm oil with no additives, rich in vitamins.",
-    price: "Le 25",
-    rating: 5,
-    images: ["/assets/products/palm-oil.svg"],
-  },
-  {
-    id: 4,
-    name: "Cassava Flour",
-    category: "Flours",
-    description: "Smooth cassava flour, ideal for baking and cooking.",
-    price: "Le 40",
-    rating: 4,
-    images: ["/assets/products/cassava-flour.svg"],
-  },
-  {
-    id: 5,
-    name: "Red Beans",
-    category: "Grains",
-    description: "Premium local red beans, rich in protein.",
-    price: "Le 45",
-    rating: 4.2,
-    images: ["/assets/products/red-beans.svg"],
-  },
-];
+import Link from "next/link";
+import { allProducts } from "@/data/products"; // Adjust the import path as needed
 
 const categories = ["All", "Grains", "Flours", "Oils"];
 
@@ -128,58 +76,60 @@ export default function ProductSection() {
             <div key={product.id} className="keen-slider__slide">
               <div
                 className="bg-white border rounded-xl shadow hover:shadow-md transition duration-300 flex flex-col overflow-hidden cursor-pointer h-full"
-                onClick={() => {
-                  setModalProduct(product);
-                  setImageIndex(0);
-                }}
+                // onClick={() => {
+                //   setModalProduct(product);
+                //   setImageIndex(0);
+                // }}
               >
-                <div className="relative w-full h-60 overflow-hidden group">
-                  <Image
-                    src={product.images[0]}
-                    alt={product.name}
-                    fill
-                    className="transition-transform duration-500 group-hover:scale-105 object-cover"
-                    priority={product.id === 1}
-                  />
-                  <span className="absolute top-3 left-3 bg-green-700 text-white text-xs px-3 py-1 rounded-full">
-                    {product.category}
-                  </span>
-                </div>
-                <div className="p-5 flex-grow flex flex-col justify-between">
-                  <div>
-                    <h3 className="text-lg font-semibold text-green-900">
-                      {product.name}
-                    </h3>
-                    <p className="text-sm text-gray-600 mt-1">
-                      {product.description}
-                    </p>
-                    <div className="flex items-center mt-2 gap-1 text-yellow-500 text-sm">
-                      {Array.from({ length: 5 }, (_, i) => (
-                        <Star
-                          key={i}
-                          size={16}
-                          fill={
-                            i < Math.floor(product.rating)
-                              ? "currentColor"
-                              : "none"
-                          }
-                          strokeWidth={1}
-                        />
-                      ))}
-                      <span className="text-xs text-gray-500 ml-1">
-                        {product.rating.toFixed(1)}
+                <Link href={`/order/${product.id}`}>
+                  <div className="relative w-full h-60 overflow-hidden group">
+                    <Image
+                      src={product.images[0]}
+                      alt={product.name}
+                      fill
+                      className="transition-transform duration-500 group-hover:scale-105 object-cover"
+                      priority={product.id === 1}
+                    />
+                    <span className="absolute top-3 left-3 bg-green-700 text-white text-xs px-3 py-1 rounded-full">
+                      {product.category}
+                    </span>
+                  </div>
+                  <div className="p-5 flex-grow flex flex-col justify-between">
+                    <div>
+                      <h3 className="text-lg font-semibold text-green-900">
+                        {product.name}
+                      </h3>
+                      <p className="text-sm text-gray-600 mt-1">
+                        {product.description}
+                      </p>
+                      <div className="flex items-center mt-2 gap-1 text-yellow-500 text-sm">
+                        {Array.from({ length: 5 }, (_, i) => (
+                          <Star
+                            key={i}
+                            size={16}
+                            fill={
+                              i < Math.floor(product.rating)
+                                ? "currentColor"
+                                : "none"
+                            }
+                            strokeWidth={1}
+                          />
+                        ))}
+                        <span className="text-xs text-gray-500 ml-1">
+                          {product.rating.toFixed(1)}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="mt-5 flex justify-between items-center">
+                      <span className="text-green-700 font-bold">
+                        {product.price}
                       </span>
+                      <Button className="bg-green-700 hover:bg-green-800 text-white text-sm flex items-center gap-2">
+                        <ShoppingCart size={16} /> Add to Cart
+                      </Button>
                     </div>
                   </div>
-                  <div className="mt-5 flex justify-between items-center">
-                    <span className="text-green-700 font-bold">
-                      {product.price}
-                    </span>
-                    <Button className="bg-green-700 hover:bg-green-800 text-white text-sm flex items-center gap-2">
-                      <ShoppingCart size={16} /> Add to Cart
-                    </Button>
-                  </div>
-                </div>
+                </Link>
               </div>
             </div>
           ))}
@@ -223,9 +173,7 @@ export default function ProductSection() {
                   <button
                     onClick={() =>
                       setImageIndex((prev) =>
-                        prev === 0
-                          ? modalProduct.images.length - 1
-                          : prev - 1
+                        prev === 0 ? modalProduct.images.length - 1 : prev - 1
                       )
                     }
                     className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white rounded-full shadow p-1"
