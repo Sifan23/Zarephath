@@ -5,6 +5,7 @@ import AboutSection from "@/components/sections/AboutSection";
 import ProductsSection from "@/components/sections/ProductsSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import ContactSection from "@/components/sections/ContactSection";
+{/*import OrderForm from "@/components/sections/OrderForm";*/}
 
 export default function HomePage() {
   return (
@@ -15,6 +16,7 @@ export default function HomePage() {
       <ProductsSection />
       <TestimonialsSection />
       <ContactSection />
+      {/*<OrderForm />*/}
       <Footer />
     </main>
   );
