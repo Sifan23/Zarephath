@@ -1,15 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Link from 'next/link'
+import Link from "next/link";
 import { useState } from "react";
-import {
-  ShoppingCart,
-  Star,
-  X,
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react";
+import { ShoppingCart, Star, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
@@ -22,7 +16,10 @@ const allProducts = [
     description: "High-quality Garri, processed and packaged for freshness.",
     price: "Le 50",
     rating: 4.5,
-    images: ["/assets/products/garri.svg", "/assets/products/garri2.svg"],
+    images: [
+      "/assets/products/product-delta-garri.png",
+      "/assets/products/garri2.svg",
+    ],
   },
   {
     id: 2,
@@ -31,7 +28,7 @@ const allProducts = [
     description: "Nutritious plantain flour, gluten-free and rich in fiber.",
     price: "Le 35",
     rating: 4,
-    images: ["/assets/products/plantian.svg"],
+    images: ["/assets/products/product-plantain-flour.png"],
   },
   {
     id: 3,
@@ -40,7 +37,7 @@ const allProducts = [
     description: "Pure red palm oil with no additives, rich in vitamins.",
     price: "Le 25",
     rating: 5,
-    images: ["/assets/products/palm-oil.svg"],
+    images: ["/assets/products/product-palm-oil.png"],
   },
   {
     id: 4,
@@ -139,7 +136,7 @@ export default function ProductSection() {
                     src={product.images[0]}
                     alt={product.name}
                     fill
-                    className="transition-transform duration-500 group-hover:scale-105 object-cover"
+                    className="transition-transform duration-500 group-hover:scale-105 object-contain"
                     priority={product.id === 1}
                   />
                   <span className="absolute top-3 left-3 bg-green-700 text-white text-xs px-3 py-1 rounded-full">
@@ -224,9 +221,7 @@ export default function ProductSection() {
                   <button
                     onClick={() =>
                       setImageIndex((prev) =>
-                        prev === 0
-                          ? modalProduct.images.length - 1
-                          : prev - 1
+                        prev === 0 ? modalProduct.images.length - 1 : prev - 1
                       )
                     }
                     className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white rounded-full shadow p-1"
