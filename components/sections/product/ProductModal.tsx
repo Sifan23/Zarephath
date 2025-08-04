@@ -2,7 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight, ShoppingCart, Star, X } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  ShoppingCart,
+  Star,
+  X,
+  ClipboardCheck,
+} from "lucide-react";
 import { Product } from "@/types";
 import { useState } from "react";
 
@@ -22,10 +29,11 @@ const ProductModal = ({
       <div className="bg-white rounded-lg shadow-lg max-w-md w-full p-6 relative">
         <button
           onClick={() => setModalProduct(null)}
-          className="absolute top-4 right-4 text-gray-500 hover:text-red-600"
+          className="absolute top-1 right-1 z-50 bg-green-700 rounded-full p-1 shadow transition cursor-pointer"
         >
-          <X size={20} />
+          <X size={16} className="text-white" />
         </button>
+
         <div className="relative w-full h-60 mb-4">
           <Image
             src={modalProduct.images[imageIndex]}
@@ -62,28 +70,12 @@ const ProductModal = ({
           {modalProduct.name}
         </h3>
         <p className="text-sm text-gray-600 my-2">{modalProduct.description}</p>
-        <div className="flex items-center gap-2 mb-3 text-yellow-500 text-sm">
-          {Array.from({ length: 5 }, (_, i) => (
-            <Star
-              key={i}
-              size={16}
-              fill={
-                i < Math.floor(modalProduct.rating) ? "currentColor" : "none"
-              }
-              strokeWidth={1}
-            />
-          ))}
-          <span className="text-xs text-gray-500 ml-1">
-            {modalProduct.rating.toFixed(1)}
-          </span>
-        </div>
         <div className="flex justify-between items-center mt-4">
-          <span className="text-green-700 font-bold">{modalProduct.price}</span>
           <Link
             href={`/order?product=${encodeURIComponent(modalProduct.name)}`}
             className="bg-green-700 hover:bg-green-800 text-white text-sm flex items-center gap-2 px-4 py-2 rounded"
           >
-            <ShoppingCart size={16} /> Buy Now
+            <ClipboardCheck size={16} /> Order Now
           </Link>
         </div>
       </div>
