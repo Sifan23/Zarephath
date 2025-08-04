@@ -19,9 +19,10 @@ import { categories } from "@/data/categories";
 import ProductCard from "./ProductCard";
 import CategoryFilter from "./CategoryFilter";
 import ProductModal from "./ProductModal";
+import { Product } from "@/types/index";
 
 export default function ProductSection() {
-  const [modalProduct, setModalProduct] = useState<any>(null);
+  const [modalProduct, setModalProduct] = useState<Product | null>(null);
   const [imageIndex, setImageIndex] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState("All");
