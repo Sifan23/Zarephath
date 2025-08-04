@@ -3,7 +3,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { ShoppingCart, Star, X, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  ShoppingCart,
+  Star,
+  X,
+  ChevronLeft,
+  ChevronRight,
+  Eye,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
@@ -174,7 +181,7 @@ export default function ProductSection() {
                       {product.price}
                     </span>
                     <Button className="bg-green-700 hover:bg-green-800 text-white text-sm flex items-center gap-2">
-                      <ShoppingCart size={16} /> Add to Cart
+                      <Eye size={16} /> Show more
                     </Button>
                   </div>
                 </div>
