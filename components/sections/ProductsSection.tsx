@@ -176,8 +176,15 @@ export default function ProductSection() {
                     <span className="text-green-700 font-bold">
                       {product.price}
                     </span>
-                    <Button className="bg-green-700 hover:bg-green-800 text-white text-sm flex items-center gap-2">
-                      <ShoppingCart size={16} /> Add to Cart
+                    <Button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setModalProduct(product);
+                        setImageIndex(0);
+                      }}
+                      className="bg-green-700 hover:bg-green-800 text-white text-sm px-4 py-2"
+                    >
+                      Show More
                     </Button>
                   </div>
                 </div>
@@ -202,77 +209,64 @@ export default function ProductSection() {
         </div>
       </div>
 
-      {/* Product Modal */}
-      {modalProduct && (
-        <div className="fixed inset-0 bg-black bg-opacity-40 backdrop-blur-sm flex justify-center items-center z-50 px-4">
-          <div className="bg-white rounded-lg shadow-lg max-w-md w-full p-6 relative">
-            <button
-              onClick={() => setModalProduct(null)}
-              className="absolute top-4 right-4 text-gray-500 hover:text-red-600"
-            >
-              <X size={20} />
-            </button>
-            <div className="relative w-full h-60 mb-4">
-              <Image
-                src={modalProduct.images[imageIndex]}
-                alt={modalProduct.name}
-                fill
-                className="rounded object-cover"
-              />
-              {modalProduct.images.length > 1 && (
-                <>
-                  <button
-                    onClick={() =>
-                      setImageIndex((prev) =>
-                        prev === 0
-                          ? modalProduct.images.length - 1
-                          : prev - 1
-                      )
-                    }
-                    className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white rounded-full shadow p-1"
-                  >
-                    <ChevronLeft size={20} />
-                  </button>
-                  <button
-                    onClick={() =>
-                      setImageIndex((prev) =>
-                        prev === modalProduct.images.length - 1 ? 0 : prev + 1
-                      )
-                    }
-                    className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white rounded-full shadow p-1"
-                  >
-                    <ChevronRight size={20} />
-                  </button>
-                </>
-              )}
-            </div>
-            <h3 className="text-xl font-bold text-green-800">
-              {modalProduct.name}
-            </h3>
-            <p className="text-sm text-gray-600 my-2">
-              {modalProduct.description}
-            </p>
-            <div className="flex items-center gap-2 mb-3 text-yellow-500 text-sm">
-              {Array.from({ length: 5 }, (_, i) => (
-                <Star
-                  key={i}
-                  size={16}
-                  fill={
-                    i < Math.floor(modalProduct.rating)
-                      ? "currentColor"
-                      : "none"
-                  }
-                  strokeWidth={1}
-                />
-              ))}
-              <span className="text-xs text-gray-500 ml-1">
-                {modalProduct.rating.toFixed(1)}
-              </span>
-            </div>
-            <div className="flex justify-between items-center mt-4">
-              <span className="text-green-700 font-bold">
-                {modalProduct.price}
-              </span>
+      {/*} Inside your Product Modal block*/}
+    {modalProduct && (
+      <div className="fixed inset-0 z-50 bg-black bg-opacity-40 backdrop-blur-sm flex justify-center items-center px-4">
+        <div className="bg-white rounded-lg shadow-lg max-w-md w-full relative overflow-hidden">
+
+          {/* Close Button */}
+          <button
+            onClick={() => setModalProduct(null)}
+            className="absolute top-4 right-4 text-gray-500 hover:text-red-600 z-10 focus:outline-none"
+            aria-label="Close modal"
+          >
+            <X size={20} />
+          </button>
+
+          {/* Image Carousel */}
+          <div className="relative w-full h-64 sm:h-72 bg-gray-50">
+            <Image
+              src={modalProduct.images[imageIndex]}
+              alt={modalProduct.name}
+              fill
+              className="object-contain p-6"
+            />
+            {modalProduct.images.length > 1 && (
+              <>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setImageIndex((prev) =>
+                      prev === 0 ? modalProduct.images.length - 1 : prev - 1
+                    );
+                  }}
+                  className="absolute left-2 top-1/2 -translate-y-1/2 bg-white text-gray-700 hover:text-black p-1 rounded-full shadow z-10"
+                  aria-label="Previous image"
+                >
+                  <ChevronLeft size={20} />
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setImageIndex((prev) =>
+                      prev === modalProduct.images.length - 1 ? 0 : prev + 1
+                    );
+                  }}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-white text-gray-700 hover:text-black p-1 rounded-full shadow z-10"
+                  aria-label="Next image"
+                >
+                  <ChevronRight size={20} />
+                </button>
+              </>
+            )}
+          </div>
+
+          {/* Modal Content */}
+          <div className="p-6">
+            <h3 className="text-xl font-bold text-green-800">{modalProduct.name}</h3>
+            <p className="text-sm text-gray-600 my-2">{modalProduct.description}</p>
+
+            <div className="mt-6 flex justify-end">
               <Link
                 href={`/order?product=${encodeURIComponent(modalProduct.name)}`}
                 className="bg-green-700 hover:bg-green-800 text-white text-sm flex items-center gap-2 px-4 py-2 rounded"
@@ -282,7 +276,8 @@ export default function ProductSection() {
             </div>
           </div>
         </div>
-      )}
+      </div>
+    )}
     </section>
   );
 }

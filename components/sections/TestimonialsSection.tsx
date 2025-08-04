@@ -10,7 +10,7 @@ const testimonials = [
     id: 1,
     name: "Grace Kamara",
     location: "Bo, Sierra Leone",
-    image: "/assets/testimonials/grace.png", // Placeholder
+    image: "/assets/testimonials/grace.png",
     rating: 5,
     quote: "Zarephath has transformed how I access natural food products. Their palm oil and garri are the best I’ve ever had!",
   },
@@ -60,11 +60,14 @@ export default function TestimonialSection() {
         </p>
 
         {/* Slider */}
-        <div ref={sliderRef} className="keen-slider mt-16">
+        <div
+          ref={sliderRef}
+          className="keen-slider mt-16 grid items-stretch"
+        >
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="keen-slider__slide bg-white border border-[#BEE0C2] rounded-xl pt-16 px-6 pb-6 shadow-md relative mx-2"
+              className="keen-slider__slide flex flex-col justify-between bg-white border border-[#BEE0C2] rounded-xl pt-16 px-6 pb-6 shadow-md relative mx-2 h-full"
             >
               {/* Avatar */}
               <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 w-20 h-20 rounded-full overflow-hidden border-4 border-white shadow-md bg-gray-200">
@@ -93,7 +96,7 @@ export default function TestimonialSection() {
               </div>
 
               {/* Quote */}
-              <p className="mt-4 text-gray-700 text-sm italic leading-relaxed">
+              <p className="mt-4 text-gray-700 text-sm italic leading-relaxed flex-1">
                 “{testimonial.quote}”
               </p>
             </div>
@@ -107,9 +110,7 @@ export default function TestimonialSection() {
               key={idx}
               onClick={() => instanceRef.current?.moveToIdx(idx)}
               className={`h-2 w-2 rounded-full transition-all duration-300 ${
-                currentSlide === idx
-                  ? "bg-green-800 scale-125"
-                  : "bg-green-300"
+                currentSlide === idx ? "bg-green-800 scale-125" : "bg-green-300"
               }`}
             ></button>
           ))}

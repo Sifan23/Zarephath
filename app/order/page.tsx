@@ -13,6 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 
 export default function OrderForm() {
   const searchParams = useSearchParams()
@@ -27,24 +28,41 @@ export default function OrderForm() {
   const [quantity, setQuantity] = useState("")
   const [method, setMethod] = useState("")
   const [notes, setNotes] = useState("")
+  const [showThankYou, setShowThankYou] = useState(false)
 
   useEffect(() => {
-    if (productFromQuery) {
-      setSelectedProduct(productFromQuery)
-    }
+    if (productFromQuery) setSelectedProduct(productFromQuery)
   }, [productFromQuery])
+
+  const isValidEmail = (email: string) =>
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+
+  const isValidPhone = (phone: string) =>
+    /^[0-9]{8,15}$/.test(phone)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+
+    // Validation
+    if (!isValidEmail(email)) {
+      alert("Please enter a valid email address.")
+      return
+    }
+    if (!isValidPhone(phone)) {
+      alert("Please enter a valid phone number (numbers only).")
+      return
+    }
+    if (!quantity) {
+      alert("Please enter quantity or size.")
+      return
+    }
 
     const message = `Hello Zarephath Team! 👋\n\nI'd like to place an order:\n\n🛒 *Product*: ${selectedProduct}\n📦 *Quantity/Size*: ${quantity}\n🚚 *Delivery Method*: ${method}\n📍 *Address*: ${address}\n📞 *Phone*: ${phone}\n📧 *Email*: ${email}\n🧑 *Name*: ${fullName}\n📝 *Notes*: ${notes || "None"}\n\nThank you! 🙏`
 
     const whatsappUrl = `https://wa.me/23276877246?text=${encodeURIComponent(message)}`
     window.open(whatsappUrl, "_blank")
 
-    // Optional: show alert or redirect
-    alert("Redirecting to WhatsApp...")
-    // router.push("/thank-you")
+    setShowThankYou(true)
   }
 
   const handleGoBack = () => {
@@ -55,12 +73,12 @@ export default function OrderForm() {
     <section className="py-16 bg-gray-50" id="order">
       <div className="container max-w-2xl px-4 mx-auto">
         <h2 className="text-3xl font-bold text-center mb-8 text-green-800">Place Your Order</h2>
-        <p className="text-center text-black font-semibold">
+        <p className="text-center text-black font-semibold mb-6">
           Please fill out the form below to place your order.
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-6 bg-white p-6 rounded shadow">
-          <div>
+          <div className="space-y-1">
             <Label htmlFor="fullName">Full Name</Label>
             <Input
               id="fullName"
@@ -71,7 +89,7 @@ export default function OrderForm() {
             />
           </div>
 
-          <div>
+          <div className="space-y-1">
             <Label htmlFor="email">Email</Label>
             <Input
               id="email"
@@ -83,7 +101,7 @@ export default function OrderForm() {
             />
           </div>
 
-          <div>
+          <div className="space-y-1">
             <Label htmlFor="phone">Phone Number</Label>
             <Input
               id="phone"
@@ -95,7 +113,7 @@ export default function OrderForm() {
             />
           </div>
 
-          <div>
+          <div className="space-y-1">
             <Label htmlFor="product">Product</Label>
             <Select value={selectedProduct} onValueChange={setSelectedProduct} required>
               <SelectTrigger id="product" className="w-full">
@@ -111,7 +129,7 @@ export default function OrderForm() {
             </Select>
           </div>
 
-          <div>
+          <div className="space-y-1">
             <Label htmlFor="quantity">Quantity / Size</Label>
             <Input
               id="quantity"
@@ -122,7 +140,7 @@ export default function OrderForm() {
             />
           </div>
 
-          <div>
+          <div className="space-y-1">
             <Label htmlFor="address">Delivery/Shipping Address</Label>
             <Textarea
               id="address"
@@ -133,18 +151,21 @@ export default function OrderForm() {
             />
           </div>
 
-          <div>
-            <Label htmlFor="method">Preferred Delivery Method (Pickup / Delivery)</Label>
-            <Input
-              id="method"
-              value={method}
-              onChange={(e) => setMethod(e.target.value)}
-              placeholder="e.g. Home Delivery"
-              required
-            />
+          <div className="space-y-1">
+            <Label htmlFor="method">Preferred Delivery Method</Label>
+            <Select value={method} onValueChange={setMethod} required>
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Select Delivery Method" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="home delivery">Home Delivery</SelectItem>
+                <SelectItem value="pickup">Pickup</SelectItem>
+                <SelectItem value="courier">Courier</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
 
-          <div>
+          <div className="space-y-1">
             <Label htmlFor="notes">Additional Notes (Optional)</Label>
             <Textarea
               id="notes"
@@ -168,6 +189,21 @@ export default function OrderForm() {
           </Button>
         </form>
       </div>
+
+      {/* ✅ Thank You Modal */}
+      <Dialog open={showThankYou} onOpenChange={setShowThankYou}>
+        <DialogContent className="text-center">
+          <DialogHeader>
+            <DialogTitle className="text-green-700 text-2xl">🎉 Thank You!</DialogTitle>
+          </DialogHeader>
+          <p className="text-lg text-gray-600 mt-2">
+            Your order has been submitted successfully via WhatsApp!
+          </p>
+          <Button onClick={() => setShowThankYou(false)} className="mt-4">
+            Close
+          </Button>
+        </DialogContent>
+      </Dialog>
     </section>
   )
 }
