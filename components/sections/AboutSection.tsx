@@ -9,7 +9,7 @@ const About = () => {
         {/* Left Image */}
         <div className="flex justify-center">
           <Image
-            src="/about.svg"
+            src="/assets/aboutus-section-img.png"
             alt="About Zarephath"
             width={420}
             height={300}
@@ -33,8 +33,8 @@ const About = () => {
             NAFDAC approval on all products.
           </p>
           <p className="text-gray-800 mb-8 leading-relaxed">
-            Our methods blend tradition with innovation, making sure your food is
-            fresh, safe, and full of nutrients.
+            Our methods blend tradition with innovation, making sure your food
+            is fresh, safe, and full of nutrients.
           </p>
 
           {/* Buttons */}
