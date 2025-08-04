@@ -50,7 +50,7 @@ export default function ProductCard({
         </div>
         <div className="mt-5 flex justify-between items-center">
           <span className="text-green-700 font-bold">{product.price}</span>
-          <Button className="bg-green-700 hover:bg-green-800 text-white text-sm flex items-center gap-2">
+          <Button className="bg-green-700 hover:bg-green-800 text-white text-sm flex items-center gap-2 cursor-pointer">
             <Eye size={16} /> Show More
           </Button>
         </div>
