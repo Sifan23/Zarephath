@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: "Zarephath | Freshly Processed Foods, Delivered with Care",
   description:
     "Zarephath is a certified Nigerian food processing company delivering NAFDAC & FDA-approved, high-quality products across Africa and beyond. Rooted in tradition and powered by technology, we prioritize health, hygiene, and excellence.",
+  icons: {
+    icon: "/logo.svg",
+  },
 };
 
 export default function RootLayout({
