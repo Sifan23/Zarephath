@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from 'next/link'
 import { useState } from "react";
 import { ShoppingCart, Star, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -220,9 +221,12 @@ export default function ProductSection() {
               <span className="text-green-700 font-bold">
                 {modalProduct.price}
               </span>
-              <Button className="bg-green-700 hover:bg-green-800 text-white text-sm flex items-center gap-2">
+              <Link
+                href={`/order?product=${encodeURIComponent(modalProduct.name)}`}
+                className="bg-green-700 hover:bg-green-800 text-white text-sm flex items-center gap-2 px-4 py-2 rounded"
+              >
                 <ShoppingCart size={16} /> Buy Now
-              </Button>
+              </Link>
             </div>
           </div>
         </div>
