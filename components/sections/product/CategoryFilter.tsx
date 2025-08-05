@@ -17,7 +17,7 @@ export default function CategoryFilter({
             selected === cat
               ? "bg-green-700 text-white border-green-700"
               : "text-green-700 border-green-300 hover:border-green-500"
-          } text-sm font-medium transition`}
+          } text-sm font-medium transition cursor-pointer`}
         >
           {cat}
         </button>
