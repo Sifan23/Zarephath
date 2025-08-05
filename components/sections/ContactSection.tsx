@@ -86,6 +86,7 @@ export default function ContactSection() {
                 Name
               </label>
               <input
+                required
                 type="text"
                 id="name"
                 name="name"
@@ -107,6 +108,7 @@ export default function ContactSection() {
                 Email
               </label>
               <input
+                required
                 type="email"
                 id="email"
                 name="email"
@@ -128,6 +130,7 @@ export default function ContactSection() {
                 Subject
               </label>
               <input
+                required
                 type="text"
                 id="subject"
                 name="subject"
@@ -149,6 +152,7 @@ export default function ContactSection() {
                 Message
               </label>
               <textarea
+                required
                 id="message"
                 name="message"
                 rows={4}
