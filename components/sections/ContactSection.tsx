@@ -1,10 +1,60 @@
 "use client";
 
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { useForm, ValidationError } from "@formspree/react";
+import { toast } from "sonner";
+import { Loader2, CheckCircle2, AlertTriangle } from "lucide-react";
 
 export default function ContactSection() {
   const [state, handleSubmit] = useForm("mrblygrn");
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    await handleSubmit(e);
+
+    if (state.succeeded) {
+      toast.success("Message sent successfully!", {
+        style: {
+          backgroundColor: "#22c55e",
+          color: "white",
+        },
+        icon: <CheckCircle2 className="text-white" />,
+      });
+      formRef.current?.reset();
+    } else if (state.errors && Object.keys(state.errors).length > 0) {
+      toast.error("Failed to send message. Please try again.", {
+        style: {
+          backgroundColor: "#ef4444",
+          color: "white",
+        },
+        icon: <AlertTriangle className="text-white" />,
+      });
+    }
+  };
+
+  useEffect(() => {
+    if (state.succeeded) {
+      toast.success("Message sent successfully!", {
+        style: {
+          backgroundColor: "#22c55e",
+          color: "white",
+        },
+        icon: <CheckCircle2 className="text-white" />,
+      });
+      formRef.current?.reset();
+    }
+
+    if (state.errors && Object.keys(state.errors).length > 0) {
+      toast.error("Failed to send message. Please try again.", {
+        style: {
+          backgroundColor: "#ef4444",
+          color: "white",
+        },
+        icon: <AlertTriangle className="text-white" />,
+      });
+    }
+  }, [state.succeeded, state.errors]);
 
   return (
     <section id="contact" className="bg-green-50 py-20 px-6 md:px-10 lg:px-20">
@@ -15,8 +65,8 @@ export default function ContactSection() {
             Contact Us
           </h2>
           <p className="mt-3 text-gray-700 max-w-xl mx-auto text-sm md:text-base">
-            We'd love to hear from you! Reach out with questions, feedback, or
-            partnership opportunities.
+            We&apos;d love to hear from you! Reach out with questions, feedback,
+            or partnership opportunities.
           </p>
         </div>
 
@@ -24,7 +74,8 @@ export default function ContactSection() {
         <div className="grid md:grid-cols-2 gap-12">
           {/* Contact Form */}
           <form
-            onSubmit={handleSubmit}
+            ref={formRef}
+            onSubmit={onSubmit}
             className="bg-white p-6 rounded-xl shadow-md border border-[#BEE0C2]"
           >
             <div className="mb-4">
@@ -114,15 +165,14 @@ export default function ContactSection() {
             <button
               type="submit"
               disabled={state.submitting}
-              className="w-full bg-green-700 text-white py-2 rounded-md hover:bg-green-800 transition duration-300 disabled:bg-green-400 disabled:cursor-not-allowed"
+              className="w-full bg-green-700 text-white py-2 rounded-md hover:bg-green-800 transition duration-300 disabled:bg-green-400 disabled:cursor-not-allowed flex justify-center items-center cursor-pointer"
             >
-              {state.submitting ? "Sending..." : "Send Message"}
+              {state.submitting ? (
+                <Loader2 className="w-5 h-5 animate-spin" />
+              ) : (
+                "Send Message"
+              )}
             </button>
-            {state.succeeded && (
-              <p className="mt-4 text-green-700 text-center">
-                Thanks for your message!
-              </p>
-            )}
           </form>
 
           {/* Contact Info */}
