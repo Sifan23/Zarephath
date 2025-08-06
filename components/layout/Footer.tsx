@@ -29,8 +29,8 @@ export default function Footer() {
         {/* Contact & Social */}
         <div>
           <h3 className="text-xl font-semibold mb-3">Contact</h3>
-          <p className="text-sm text-gray-300">Email: support@zarephath.com</p>
-          <p className="text-sm text-gray-300">Phone: +234 800 123 4567</p>
+          <p className="text-sm text-gray-300">Email: zarephathnigerialimited@gmail.com</p>
+          <p className="text-sm text-gray-300">Phone: +234 80 37594488</p>
 
           <div className="flex space-x-4 mt-4">
             <a href="#" className="hover:text-green-400" aria-label="Facebook">
