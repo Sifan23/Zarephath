@@ -34,7 +34,7 @@ export default function OrderForm() {
     }
   }, [productFromQuery]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handlePlaceOrder = async (e: React.FormEvent) => {
     e.preventDefault();
 
     try {
@@ -53,16 +53,29 @@ export default function OrderForm() {
         }),
       });
 
-      // Optionally open WhatsApp as before
-      // const message = `Hello Zarephath Team! 👋\n\nI'd like to place an order:\n\n🛒 *Product*: ${selectedProduct}\n📦 *Quantity/Size*: ${quantity}\n🚚 *Delivery Method*: ${method}\n📍 *Address*: ${address}\n📞 *Phone*: ${phone}\n📧 *Email*: ${email}\n🧑 *Name*: ${fullName}\n📝 *Notes*: ${notes || "None"}\n\nThank you! 🙏`;
-      // const whatsappUrl = `https://wa.me/23276877246?text=${encodeURIComponent(message)}`;
-      // window.open(whatsappUrl, "_blank");
-
       alert("Order submitted! Redirecting to WhatsApp...");
+      setFullName("");
+      setEmail("");
+      setPhone("");
+      setSelectedProduct("");
+      setQuantity("");
+      setMethod("");
+      setAddress("");
+      setNotes("");
     } catch (error) {
       alert("Something went wrong. Please try again.");
       console.error(error);
     }
+  };
+
+  const handleWhatsAppOrder = () => {
+    const message = `Hello Zarephath Team! 👋\n\nI'd like to place an order:\n\n🛒 *Product*: ${selectedProduct}\n📦 *Quantity/Size*: ${quantity}\n🚚 *Delivery Method*: ${method}\n📍 *Address*: ${address}\n📞 *Phone*: ${phone}\n📧 *Email*: ${email}\n🧑 *Name*: ${fullName}\n📝 *Notes*: ${notes || "None"}\n\nThank you! 🙏`;
+
+    const whatsappUrl = `https://wa.me/23276877246?text=${encodeURIComponent(
+      message
+    )}`;
+
+    window.open(whatsappUrl, "_blank");
   };
 
   const handleGoBack = () => {
@@ -71,7 +84,7 @@ export default function OrderForm() {
 
   return (
     <section className="py-16 bg-gray-50" id="order">
-      <div className="container max-w-2xl px-4 mx-auto">
+      <div className="container max-w-2xl px-4 mx-auto space-y-6">
         <h2 className="text-3xl font-bold text-center mb-8 text-green-800">
           Place Your Order
         </h2>
@@ -80,11 +93,15 @@ export default function OrderForm() {
         </p>
 
         <form
-          onSubmit={handleSubmit}
+          onSubmit={(e) => {
+            handlePlaceOrder(e);
+          }}
           className="space-y-6 bg-white p-6 rounded shadow"
         >
           <div>
-            <Label htmlFor="fullName">Full Name</Label>
+            <Label htmlFor="fullName" className="pb-2">
+              Full Name
+            </Label>
             <Input
               id="fullName"
               value={fullName}
@@ -95,7 +112,9 @@ export default function OrderForm() {
           </div>
 
           <div>
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email" className="pb-2">
+              Email
+            </Label>
             <Input
               id="email"
               type="email"
@@ -107,7 +126,9 @@ export default function OrderForm() {
           </div>
 
           <div>
-            <Label htmlFor="phone">Phone Number</Label>
+            <Label htmlFor="phone" className="pb-2">
+              Phone Number
+            </Label>
             <Input
               id="phone"
               type="tel"
@@ -119,7 +140,9 @@ export default function OrderForm() {
           </div>
 
           <div>
-            <Label htmlFor="product">Product</Label>
+            <Label htmlFor="product" className="pb-2">
+              Product
+            </Label>
             <Select
               value={selectedProduct}
               onValueChange={setSelectedProduct}
@@ -141,7 +164,9 @@ export default function OrderForm() {
           </div>
 
           <div>
-            <Label htmlFor="quantity">Quantity / Size</Label>
+            <Label htmlFor="quantity" className="pb-2">
+              Quantity / Size
+            </Label>
             <Input
               id="quantity"
               value={quantity}
@@ -152,7 +177,9 @@ export default function OrderForm() {
           </div>
 
           <div>
-            <Label htmlFor="address">Delivery/Shipping Address</Label>
+            <Label htmlFor="address" className="pb-2">
+              Delivery/Shipping Address
+            </Label>
             <Textarea
               id="address"
               value={address}
@@ -163,7 +190,7 @@ export default function OrderForm() {
           </div>
 
           <div>
-            <Label htmlFor="method">
+            <Label htmlFor="method" className="pb-2">
               Preferred Delivery Method (Pickup / Delivery)
             </Label>
             <Input
@@ -176,7 +203,9 @@ export default function OrderForm() {
           </div>
 
           <div>
-            <Label htmlFor="notes">Additional Notes (Optional)</Label>
+            <Label htmlFor="notes" className="pb-2">
+              Additional Notes (Optional)
+            </Label>
             <Textarea
               id="notes"
               value={notes}
@@ -187,16 +216,25 @@ export default function OrderForm() {
 
           <Button
             type="submit"
-            className="w-full bg-green-700 hover:bg-green-800 text-white text-lg mt-2"
+            className="w-full bg-green-700 hover:bg-green-800 text-white text-lg mt-2 cursor-pointer"
           >
             Place Your Order Now
           </Button>
+          <p className="text-sm text-black mt-2 font-bold">
+            Or Order via{" "}
+            <span
+              className="text-[#408B69] cursor-pointer hover:underline"
+              onClick={handleWhatsAppOrder}
+            >
+              WhatsApp
+            </span>
+          </p>
 
           <Button
             type="button"
             variant="outline"
             onClick={handleGoBack}
-            className="w-full border-green-700 text-green-700 hover:bg-green-100 mt-2"
+            className="w-full border-green-700 text-green-700 hover:bg-green-100 mt-2 cursor-pointer"
           >
             Cancel & Go Back
           </Button>
