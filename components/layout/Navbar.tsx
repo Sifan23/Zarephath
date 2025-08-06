@@ -52,20 +52,43 @@ export default function Navbar() {
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-6 font-medium">
           <ul className="flex items-center space-x-6">
-            <li><a href="#home" className={linkClass("home")}>Home</a></li>
-            <li><a href="#about" className={linkClass("about")}>About</a></li>
-            <li><a href="#products" className={linkClass("products")}>Products</a></li>
-            <li><a href="#testimonials" className={linkClass("testimonials")}>Testimonials</a></li>
-            <li><a href="#contact" className={linkClass("contact")}>Contact</a></li>
+            <li>
+              <a href="#home" className={linkClass("home")}>
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="#about" className={linkClass("about")}>
+                About
+              </a>
+            </li>
+            <li>
+              <a href="#products" className={linkClass("products")}>
+                Products
+              </a>
+            </li>
+            <li>
+              <a href="#testimonials" className={linkClass("testimonials")}>
+                Testimonials
+              </a>
+            </li>
+            <li>
+              <a href="#contact" className={linkClass("contact")}>
+                Contact
+              </a>
+            </li>
           </ul>
 
           {/* Cart Icon */}
-          <Link href="/cart" className="text-[#05c069] hover:scale-110 transition-transform">
+          {/* <Link href="/cart" className="text-[#05c069] hover:scale-110 transition-transform">
             <ShoppingCart className="w-5 h-5" />
-          </Link>
+          </Link> */}
 
           {/* Order Now */}
-          <Button asChild className="bg-green-700 hover:bg-green-800 text-white rounded-full px-5 py-2 text-sm">
+          <Button
+            asChild
+            className="bg-green-700 hover:bg-green-800 text-white rounded-full px-5 py-2 text-sm"
+          >
             <Link href="#products">Order Now</Link>
           </Button>
         </div>
@@ -77,12 +100,32 @@ export default function Navbar() {
           aria-label="Toggle Menu"
         >
           {isOpen ? (
-            <svg className="w-7 h-7" viewBox="0 0 24 24" stroke="currentColor" fill="none">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            <svg
+              className="w-7 h-7"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              fill="none"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
             </svg>
           ) : (
-            <svg className="w-7 h-7" viewBox="0 0 24 24" stroke="currentColor" fill="none">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8h16M4 16h16" />
+            <svg
+              className="w-7 h-7"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              fill="none"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 8h16M4 16h16"
+              />
             </svg>
           )}
         </button>
@@ -92,14 +135,61 @@ export default function Navbar() {
       {isOpen && (
         <div className="md:hidden bg-white shadow-md px-6 pb-6">
           <ul className="flex flex-col space-y-5 text-gray-800 font-medium">
-            <li><a href="#home" onClick={() => setIsOpen(false)} className={linkClass("home")}>Home</a></li>
-            <li><a href="#about" onClick={() => setIsOpen(false)} className={linkClass("about")}>About</a></li>
-            <li><a href="#products" onClick={() => setIsOpen(false)} className={linkClass("products")}>Products</a></li>
-            <li><a href="#testimonials" onClick={() => setIsOpen(false)} className={linkClass("testimonials")}>Testimonials</a></li>
-            <li><a href="#contact" onClick={() => setIsOpen(false)} className={linkClass("contact")}>Contact</a></li>
             <li>
-              <Button asChild className="w-full bg-[#05c069] hover:bg-[#049a50] text-white rounded-full py-2 text-sm mt-2">
-                <Link href="#products" onClick={() => setIsOpen(false)} className="flex justify-center items-center gap-2">
+              <a
+                href="#home"
+                onClick={() => setIsOpen(false)}
+                className={linkClass("home")}
+              >
+                Home
+              </a>
+            </li>
+            <li>
+              <a
+                href="#about"
+                onClick={() => setIsOpen(false)}
+                className={linkClass("about")}
+              >
+                About
+              </a>
+            </li>
+            <li>
+              <a
+                href="#products"
+                onClick={() => setIsOpen(false)}
+                className={linkClass("products")}
+              >
+                Products
+              </a>
+            </li>
+            <li>
+              <a
+                href="#testimonials"
+                onClick={() => setIsOpen(false)}
+                className={linkClass("testimonials")}
+              >
+                Testimonials
+              </a>
+            </li>
+            <li>
+              <a
+                href="#contact"
+                onClick={() => setIsOpen(false)}
+                className={linkClass("contact")}
+              >
+                Contact
+              </a>
+            </li>
+            <li>
+              <Button
+                asChild
+                className="w-full bg-[#05c069] hover:bg-[#049a50] text-white rounded-full py-2 text-sm mt-2"
+              >
+                <Link
+                  href="#products"
+                  onClick={() => setIsOpen(false)}
+                  className="flex justify-center items-center gap-2"
+                >
                   <ShoppingCart size={18} />
                   Order Now
                 </Link>
