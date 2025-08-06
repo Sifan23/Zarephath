@@ -242,13 +242,15 @@ export default function OrderForm() {
             <Label htmlFor="method" className="pb-2">
               Preferred Delivery Method (Pickup / Delivery)
             </Label>
-            <Input
-              id="method"
-              value={method}
-              onChange={(e) => setMethod(e.target.value)}
-              placeholder="e.g. Home Delivery"
-              required
-            />
+            <Select value={method} onValueChange={setMethod} required>
+              <SelectTrigger id="method" className="w-full">
+                <SelectValue placeholder="Select Delivery Method" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="pickup">Pickup</SelectItem>
+                <SelectItem value="delivery">Delivery</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
 
           <div>
