@@ -190,10 +190,10 @@ export default function ContactSection() {
             <div className="space-y-4 text-sm">
               <div>
                 <span className="font-medium">Email:</span>{" "}
-                support@zarephath.com
+                zarephathnigerialimited@gmail.com
               </div>
               <div>
-                <span className="font-medium">Phone:</span> +234 800 123 4567
+                <span className="font-medium">Phone:</span> +234 8 037594488
               </div>
               <div>
                 <span className="font-medium">Address:</span>
