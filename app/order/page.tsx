@@ -13,6 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { toast } from "sonner";
 
 export default function OrderForm() {
   const searchParams = useSearchParams();
@@ -34,11 +35,52 @@ export default function OrderForm() {
     }
   }, [productFromQuery]);
 
+  const validateForm = (): boolean => {
+    if (!fullName.trim()) {
+      toast.error("Full name is required");
+      return false;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      toast.error("Valid email is required");
+      return false;
+    }
+
+    if (phone.trim().length < 10) {
+      toast.error("Phone number must be at least 10 digits");
+      return false;
+    }
+
+    if (!selectedProduct) {
+      toast.error("Please select a product");
+      return false;
+    }
+
+    if (!quantity.trim()) {
+      toast.error("Quantity is required");
+      return false;
+    }
+
+    if (!method.trim()) {
+      toast.error("Delivery method is required");
+      return false;
+    }
+
+    if (!address.trim()) {
+      toast.error("Address is required");
+      return false;
+    }
+
+    return true;
+  };
+
   const handlePlaceOrder = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (!validateForm()) return;
+
     try {
-      await fetch("/api/order", {
+      const res = await fetch("/api/order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -53,7 +95,10 @@ export default function OrderForm() {
         }),
       });
 
-      alert("Order submitted! Redirecting to WhatsApp...");
+      if (!res.ok) throw new Error("Order submission failed");
+
+      toast.success("Order submitted successfully!");
+
       setFullName("");
       setEmail("");
       setPhone("");
@@ -63,7 +108,7 @@ export default function OrderForm() {
       setAddress("");
       setNotes("");
     } catch (error) {
-      alert("Something went wrong. Please try again.");
+      toast.error("Something went wrong while submitting your order");
       console.error(error);
     }
   };
