@@ -14,7 +14,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { toast } from "sonner";
-import { Loader2 } from "lucide-react";
+import { Loader2, CheckCircle2, AlertTriangle } from "lucide-react";
 
 export default function OrderForm() {
   const searchParams = useSearchParams();
@@ -39,37 +39,79 @@ export default function OrderForm() {
 
   const validateForm = (): boolean => {
     if (!fullName.trim()) {
-      toast.error("Full name is required");
+      toast.error("Full name is required", {
+        style: {
+          backgroundColor: "#ef4444",
+          color: "white",
+        },
+        icon: <AlertTriangle className="text-white" />,
+      });
       return false;
     }
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      toast.error("Valid email is required");
+      toast.error("Valid email is required", {
+        style: {
+          backgroundColor: "#ef4444",
+          color: "white",
+        },
+        icon: <AlertTriangle className="text-white" />,
+      });
       return false;
     }
 
     if (phone.trim().length < 10) {
-      toast.error("Phone number must be at least 10 digits");
+      toast.error("Phone number must be at least 10 digits", {
+        style: {
+          backgroundColor: "#ef4444",
+          color: "white",
+        },
+        icon: <AlertTriangle className="text-white" />,
+      });
       return false;
     }
 
     if (!selectedProduct) {
-      toast.error("Please select a product");
+      toast.error("Please select a product", {
+        style: {
+          backgroundColor: "#ef4444",
+          color: "white",
+        },
+        icon: <AlertTriangle className="text-white" />,
+      });
       return false;
     }
 
     if (!quantity.trim()) {
-      toast.error("Quantity is required");
+      toast.error("Quantity is required", {
+        style: {
+          backgroundColor: "#ef4444",
+          color: "white",
+        },
+        icon: <AlertTriangle className="text-white" />,
+      });
       return false;
     }
 
     if (!method.trim()) {
-      toast.error("Delivery method is required");
+      toast.error("Delivery method is required", {
+        style: {
+          backgroundColor: "#ef4444",
+          color: "white",
+        },
+        icon: <AlertTriangle className="text-white" />,
+      });
       return false;
     }
 
     if (!address.trim()) {
-      toast.error("Address is required");
+      toast.error("Address is required", {
+        style: {
+          backgroundColor: "#ef4444",
+          color: "white",
+        },
+        icon: <AlertTriangle className="text-white" />,
+      });
       return false;
     }
 
@@ -101,7 +143,13 @@ export default function OrderForm() {
 
       if (!res.ok) throw new Error("Order submission failed");
 
-      toast.success("Order submitted successfully!");
+      toast.success("Order submitted successfully!", {
+        style: {
+          backgroundColor: "#22c55e",
+          color: "white",
+        },
+        icon: <CheckCircle2 className="text-white" />,
+      });
 
       setFullName("");
       setEmail("");
@@ -112,7 +160,13 @@ export default function OrderForm() {
       setAddress("");
       setNotes("");
     } catch (error) {
-      toast.error("Something went wrong while submitting your order");
+      toast.error("Something went wrong while submitting your order", {
+        style: {
+          backgroundColor: "#ef4444",
+          color: "white",
+        },
+        icon: <AlertTriangle className="text-white" />,
+      });
       console.error(error);
     }
   };
@@ -155,8 +209,8 @@ export default function OrderForm() {
               id="fullName"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
-              required
               placeholder="Enter your full name"
+              required
             />
           </div>
 
