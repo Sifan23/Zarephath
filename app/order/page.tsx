@@ -362,7 +362,7 @@ export default function OrderForm() {
       </div>
       <Dialog open={showThankYouModal} onOpenChange={setShowThankYouModal}>
         <DialogContent className="max-w-md mx-auto text-center">
-          <DialogHeader>
+          <DialogHeader className="flex flex-col items-center">
             <CheckCircle2 className="text-green-600 w-12 h-12 mx-auto mb-4" />
             <DialogTitle className="text-2xl">Thank You!</DialogTitle>
             <DialogDescription className="mt-2 text-gray-600">
