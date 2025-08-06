@@ -67,18 +67,18 @@ export default function TestimonialSection() {
               className="keen-slider__slide bg-white border border-[#BEE0C2] rounded-xl pt-16 px-6 pb-6 shadow-md relative mx-2"
             >
               {/* Avatar */}
-              <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 w-20 h-20 rounded-full overflow-hidden border-4 border-white shadow-md bg-gray-200">
+              <div className="absolute -top-0 left-1/2 transform -translate-x-1/2 w-20 h-20 rounded-full overflow-hidden border-4 border-white shadow-md bg-gray-200">
                 <Image
                   src={testimonial.image}
                   alt={testimonial.name}
                   width={80}
                   height={80}
-                  className="object-cover w-full h-full"
+                  className="w-full h-full object-cover rounded-full"
                 />
               </div>
 
               {/* Name & Location */}
-              <div className="text-center mt-2">
+              <div className="text-center mt-6">
                 <h4 className="text-lg font-semibold text-[#103E13]">{testimonial.name}</h4>
                 <p className="text-sm text-gray-500">{testimonial.location}</p>
 
