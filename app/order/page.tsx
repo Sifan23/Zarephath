@@ -14,6 +14,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
 
 export default function OrderForm() {
   const searchParams = useSearchParams();
@@ -28,6 +29,7 @@ export default function OrderForm() {
   const [quantity, setQuantity] = useState("");
   const [method, setMethod] = useState("");
   const [notes, setNotes] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     if (productFromQuery) {
@@ -78,6 +80,8 @@ export default function OrderForm() {
     e.preventDefault();
 
     if (!validateForm()) return;
+
+    setIsSubmitting(true);
 
     try {
       const res = await fetch("/api/order", {
@@ -261,9 +265,13 @@ export default function OrderForm() {
 
           <Button
             type="submit"
-            className="w-full bg-green-700 hover:bg-green-800 text-white text-lg mt-2 cursor-pointer"
+            className="w-full bg-green-700 hover:bg-green-800 text-white text-lg mt-2 flex justify-center items-center cursor-pointer"
           >
-            Place Your Order Now
+            {isSubmitting ? (
+              <Loader2 className="animate-spin h-5 w-5 mx-auto" />
+            ) : (
+              "Place Your Order Now"
+            )}
           </Button>
           <p className="text-sm text-black mt-2 font-bold">
             Or Order via{" "}
