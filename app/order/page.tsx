@@ -15,6 +15,14 @@ import {
 } from "@/components/ui/select";
 import { toast } from "sonner";
 import { Loader2, CheckCircle2, AlertTriangle } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from "@/components/ui/dialog";
 
 export default function OrderForm() {
   const searchParams = useSearchParams();
@@ -30,6 +38,7 @@ export default function OrderForm() {
   const [method, setMethod] = useState("");
   const [notes, setNotes] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showThankYouModal, setShowThankYouModal] = useState(false);
 
   useEffect(() => {
     if (productFromQuery) {
@@ -159,6 +168,8 @@ export default function OrderForm() {
       setMethod("");
       setAddress("");
       setNotes("");
+      setShowThankYouModal(true);
+      setIsSubmitting(false);
     } catch (error) {
       toast.error("Something went wrong while submitting your order", {
         style: {
@@ -349,6 +360,26 @@ export default function OrderForm() {
           </Button>
         </form>
       </div>
+      <Dialog open={showThankYouModal} onOpenChange={setShowThankYouModal}>
+        <DialogContent className="max-w-md mx-auto text-center">
+          <DialogHeader>
+            <CheckCircle2 className="text-green-600 w-12 h-12 mx-auto mb-4" />
+            <DialogTitle className="text-2xl">Thank You!</DialogTitle>
+            <DialogDescription className="mt-2 text-gray-600">
+              Your order has been received successfully. We will get in touch
+              with you shortly.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="mt-4">
+            <Button
+              onClick={() => setShowThankYouModal(false)}
+              className="bg-green-700 hover:bg-green-800 text-white w-full"
+            >
+              Close
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }
