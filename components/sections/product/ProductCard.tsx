@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Eye, Star } from "lucide-react";
+import { Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Product } from "@/types";
 
@@ -34,22 +34,17 @@ export default function ProductCard({
             {product.name}
           </h3>
           <p className="text-sm text-gray-600 mt-1">{product.description}</p>
-          <div className="flex items-center mt-2 gap-1 text-yellow-500 text-sm">
-            {Array.from({ length: 5 }, (_, i) => (
-              <Star
-                key={i}
-                size={16}
-                fill={i < Math.floor(product.rating) ? "currentColor" : "none"}
-                strokeWidth={1}
-              />
-            ))}
-            <span className="text-xs text-gray-500 ml-1">
-              {product.rating.toFixed(1)}
-            </span>
-          </div>
+          {product.size && (
+            <p className="flex items-center mt-3 gap-1 text-yellow-500 text-md font-bold">
+              Size:{" "}
+              {Array.isArray(product.size) ? product.size[0] : product.size}
+            </p>
+          )}
         </div>
-        <div className="mt-5 flex justify-between items-center">
-          <span className="text-green-700 font-bold">{product.price}</span>
+        <div className="mt-2 flex justify-between items-center">
+          <span className="text-green-700 font-bold">
+            {Array.isArray(product.price) ? product.price[0] : product.price}
+          </span>
           <Button className="bg-green-700 hover:bg-green-800 text-white text-sm flex items-center gap-2 cursor-pointer">
             <Eye size={16} /> Show More
           </Button>
