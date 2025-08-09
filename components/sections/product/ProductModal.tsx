@@ -27,6 +27,13 @@ const ProductModal = ({
 
   if (!modalProduct) return null;
 
+  const displayPrice = Array.isArray(modalProduct.price)
+    ? modalProduct.price[imageIndex] || modalProduct.price[0]
+    : modalProduct.price;
+  const displaySize = Array.isArray(modalProduct.size)
+    ? modalProduct.size[imageIndex] || modalProduct.size[0]
+    : modalProduct.size;
+
   return (
     <div className="fixed inset-0 bg-black bg-opacity-40 backdrop-blur-sm flex justify-center items-center z-50 px-4">
       <div className="bg-white rounded-lg shadow-lg max-w-md w-full p-6 relative">
@@ -69,17 +76,41 @@ const ProductModal = ({
             </>
           )}
         </div>
-        <h3 className="text-xl font-bold text-green-800">
+        <h3 className="text-xl font-bold text-green-800 mb-2">
           {modalProduct.name}
         </h3>
-        <p className="text-sm text-gray-600 my-2">{modalProduct.description}</p>
+        <p className="text-sm text-gray-700 my-2 leading-relaxed">
+          <span className="font-bold text-green-900">Description: </span>
+          <span className="text-gray-700 font-semibold">
+            {modalProduct.description}
+          </span>
+        </p>
+        {modalProduct.benefits && (
+          <p className="text-sm text-gray-700 my-2 leading-relaxed">
+            <span className="font-bold text-green-900">Benefits: </span>
+            <span className="text-gray-700 font-semibold">
+              {modalProduct.benefits}
+            </span>
+          </p>
+        )}
+        {displaySize && (
+          <p className="text-sm text-gray-700 my-2 leading-relaxed">
+            <span className="font-bold text-green-900">Size: </span>
+            <span className="text-gray-700 font-semibold">{displaySize}</span>
+          </p>
+        )}
+        <p className="text-sm text-gray-700 my-2 leading-relaxed">
+          <span className="font-bold text-green-900">Price: </span>
+          <span className="text-gray-700 font-semibold">{displayPrice}</span>
+        </p>
         <div className="flex justify-between items-center mt-4">
           <Button
             onClick={() => {
               setLoading(true);
-              router.push(
-                `/order?product=${encodeURIComponent(modalProduct.name)}`
-              );
+              router.push(`/test`);
+              // router.push(
+              //   `/order?product=${encodeURIComponent(modalProduct.name)}&size=${encodeURIComponent(displaySize || "")}&price=${encodeURIComponent(displayPrice)}`
+              // );
             }}
             className="bg-green-700 hover:bg-green-800 text-white text-sm flex items-center justify-center gap-2 px-4 py-2 rounded min-w-[120px] cursor-pointer"
             disabled={loading}
