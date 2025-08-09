@@ -24,106 +24,82 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 
-export default function OrderForm() {
+export default function Page({ params }: { params: { id: string } }) {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const productFromQuery = searchParams.get("product")?.toLowerCase() || "";
+  const productId = decodeURIComponent(params.id); // Get product ID from path
+  const sizeFromQuery = searchParams.get("size") || "";
+  const priceFromQuery = searchParams.get("price") || "";
 
-  const [selectedProduct, setSelectedProduct] = useState("");
+  const [selectedProduct, setSelectedProduct] = useState(productId); // Initialize with productId
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
-  const [quantity, setQuantity] = useState("");
+  const [quantity, setQuantity] = useState(sizeFromQuery); // Prefill with size
   const [method, setMethod] = useState("");
   const [notes, setNotes] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showThankYouModal, setShowThankYouModal] = useState(false);
 
+  // Log initial params and state
   useEffect(() => {
-    if (productFromQuery) {
-      setSelectedProduct(productFromQuery);
-    }
-  }, [productFromQuery]);
+    console.log("Params:", { productId, sizeFromQuery, priceFromQuery });
+    setSelectedProduct(productId);
+    console.log("Selected Product Set to:", productId);
+  }, [productId]);
 
   const validateForm = (): boolean => {
     if (!fullName.trim()) {
       toast.error("Full name is required", {
-        style: {
-          backgroundColor: "#ef4444",
-          color: "white",
-        },
+        style: { backgroundColor: "#ef4444", color: "white" },
         icon: <AlertTriangle className="text-white" />,
       });
       return false;
     }
-
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       toast.error("Valid email is required", {
-        style: {
-          backgroundColor: "#ef4444",
-          color: "white",
-        },
+        style: { backgroundColor: "#ef4444", color: "white" },
         icon: <AlertTriangle className="text-white" />,
       });
       return false;
     }
-
     if (phone.trim().length < 10) {
       toast.error("Phone number must be at least 10 digits", {
-        style: {
-          backgroundColor: "#ef4444",
-          color: "white",
-        },
+        style: { backgroundColor: "#ef4444", color: "white" },
         icon: <AlertTriangle className="text-white" />,
       });
       return false;
     }
-
     if (!selectedProduct) {
+      console.log("Selected Product is empty:", selectedProduct);
       toast.error("Please select a product", {
-        style: {
-          backgroundColor: "#ef4444",
-          color: "white",
-        },
+        style: { backgroundColor: "#ef4444", color: "white" },
         icon: <AlertTriangle className="text-white" />,
       });
       return false;
     }
-
     if (!quantity.trim()) {
       toast.error("Quantity is required", {
-        style: {
-          backgroundColor: "#ef4444",
-          color: "white",
-        },
+        style: { backgroundColor: "#ef4444", color: "white" },
         icon: <AlertTriangle className="text-white" />,
       });
       return false;
     }
-
     if (!method.trim()) {
       toast.error("Delivery method is required", {
-        style: {
-          backgroundColor: "#ef4444",
-          color: "white",
-        },
+        style: { backgroundColor: "#ef4444", color: "white" },
         icon: <AlertTriangle className="text-white" />,
       });
       return false;
     }
-
     if (!address.trim()) {
       toast.error("Address is required", {
-        style: {
-          backgroundColor: "#ef4444",
-          color: "white",
-        },
+        style: { backgroundColor: "#ef4444", color: "white" },
         icon: <AlertTriangle className="text-white" />,
       });
       return false;
     }
-
     return true;
   };
 
@@ -135,6 +111,16 @@ export default function OrderForm() {
     setIsSubmitting(true);
 
     try {
+      console.log("Submitting Order:", {
+        fullName,
+        email,
+        phone,
+        selectedProduct,
+        quantity,
+        method,
+        address,
+        notes,
+      });
       const res = await fetch("/api/order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -150,13 +136,14 @@ export default function OrderForm() {
         }),
       });
 
-      if (!res.ok) throw new Error("Order submission failed");
+      if (!res.ok) {
+        console.error("API Response Error:", await res.text());
+        throw new Error("Order submission failed");
+      }
 
+      console.log("Order Submitted Successfully");
       toast.success("Order submitted successfully!", {
-        style: {
-          backgroundColor: "#22c55e",
-          color: "white",
-        },
+        style: { backgroundColor: "#22c55e", color: "white" },
         icon: <CheckCircle2 className="text-white" />,
       });
 
@@ -171,28 +158,23 @@ export default function OrderForm() {
       setShowThankYouModal(true);
       setIsSubmitting(false);
     } catch (error) {
+      console.error("Order Submission Error:", error);
       toast.error("Something went wrong while submitting your order", {
-        style: {
-          backgroundColor: "#ef4444",
-          color: "white",
-        },
+        style: { backgroundColor: "#ef4444", color: "white" },
         icon: <AlertTriangle className="text-white" />,
       });
-      console.error(error);
     }
   };
 
   const handleWhatsAppOrder = () => {
     const message = `Hello Zarephath Team! 👋\n\nI'd like to place an order:\n\n🛒 *Product*: ${selectedProduct}\n📦 *Quantity/Size*: ${quantity}\n🚚 *Delivery Method*: ${method}\n📍 *Address*: ${address}\n📞 *Phone*: ${phone}\n📧 *Email*: ${email}\n🧑 *Name*: ${fullName}\n📝 *Notes*: ${notes || "None"}\n\nThank you! 🙏`;
-
-    const whatsappUrl = `https://wa.me/23276877246?text=${encodeURIComponent(
-      message
-    )}`;
-
+    const whatsappUrl = `https://wa.me/23276877246?text=${encodeURIComponent(message)}`;
+    console.log("Opening WhatsApp URL:", whatsappUrl);
     window.open(whatsappUrl, "_blank");
   };
 
   const handleGoBack = () => {
+    console.log("Going back");
     router.back();
   };
 
@@ -207,9 +189,7 @@ export default function OrderForm() {
         </p>
 
         <form
-          onSubmit={(e) => {
-            handlePlaceOrder(e);
-          }}
+          onSubmit={handlePlaceOrder}
           className="space-y-6 bg-white p-6 rounded shadow"
         >
           <div>
@@ -266,13 +246,13 @@ export default function OrderForm() {
                 <SelectValue placeholder="Select Product" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="delta garri">Delta Garri</SelectItem>
-                <SelectItem value="plantain flour">Plantain Flour</SelectItem>
-                <SelectItem value="zarephath palm oil">
+                <SelectItem value="Delta Garri">Delta Garri</SelectItem>
+                <SelectItem value="Plantain Flour">Plantain Flour</SelectItem>
+                <SelectItem value="Zarephath Palm Oil">
                   Zarephath Palm Oil
                 </SelectItem>
-                <SelectItem value="cassava flour">Cassava Flour</SelectItem>
-                <SelectItem value="red beans">Red Beans</SelectItem>
+                <SelectItem value="Cassava Flour">Cassava Flour</SelectItem>
+                <SelectItem value="Red Beans">Red Beans</SelectItem>
               </SelectContent>
             </Select>
           </div>
