@@ -1,18 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import {
-  ChevronLeft,
-  ChevronRight,
-  X,
-  ClipboardCheck,
-  Loader2,
-} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ClipboardCheck, Loader2 } from "lucide-react";
 import { Product } from "@/types";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import Image from "next/image";
 
 const ProductModal = ({
   modalProduct,
@@ -23,7 +17,6 @@ const ProductModal = ({
 }) => {
   const [imageIndex, setImageIndex] = useState(0);
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
 
   if (!modalProduct) return null;
 
@@ -104,25 +97,23 @@ const ProductModal = ({
           <span className="text-gray-700 font-semibold">{displayPrice}</span>
         </p>
         <div className="flex justify-between items-center mt-4">
-          <Button
-            onClick={() => {
-              setLoading(true);
-              router.push(`/test`);
-              // router.push(
-              //   `/order?product=${encodeURIComponent(modalProduct.name)}&size=${encodeURIComponent(displaySize || "")}&price=${encodeURIComponent(displayPrice)}`
-              // );
-            }}
-            className="bg-green-700 hover:bg-green-800 text-white text-sm flex items-center justify-center gap-2 px-4 py-2 rounded min-w-[120px] cursor-pointer"
-            disabled={loading}
+          <Link
+            href={`/checkout/${encodeURIComponent(modalProduct.name)}?size=${encodeURIComponent(displaySize || "")}&price=${encodeURIComponent(displayPrice)}`}
+            prefetch={true}
           >
-            {loading ? (
-              <Loader2 className="animate-spin w-4 h-4" />
-            ) : (
-              <>
-                <ClipboardCheck size={16} /> Order Now
-              </>
-            )}
-          </Button>
+            <Button
+              className="bg-green-700 hover:bg-green-800 text-white text-sm flex items-center justify-center gap-2 px-4 py-2 rounded min-w-[120px] cursor-pointer"
+              disabled={loading}
+            >
+              {loading ? (
+                <Loader2 className="animate-spin w-4 h-4" />
+              ) : (
+                <>
+                  <ClipboardCheck size={16} /> Order Now
+                </>
+              )}
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
