@@ -61,7 +61,7 @@ export default function ContactSection() {
       <div className="max-w-6xl mx-auto">
         {/* Heading */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#103E13]">
+          <h2 className="text-3xl md:text-4xl font-bold text-green-800">
             Contact Us
           </h2>
           <p className="mt-3 text-gray-700 max-w-xl mx-auto text-sm md:text-base">

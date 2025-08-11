@@ -54,7 +54,7 @@ export default function TestimonialSection() {
     <section id="testimonials" className="bg-white py-20 px-6 md:px-10 lg:px-20">
       <div className="max-w-6xl mx-auto text-center">
         {/* Heading */}
-        <h2 className="text-3xl md:text-4xl font-bold text-[#103E13]">Testimonials</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-green-800">Testimonials</h2>
         <p className="mt-3 text-gray-600 max-w-2xl mx-auto text-sm md:text-base">
           From families to food vendors, people across West Africa love our products for their quality, freshness, and trust. Real stories from people who trust and love our products.
         </p>
