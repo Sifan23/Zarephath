@@ -32,7 +32,7 @@ const ProductModal = ({
       <div className="bg-white rounded-lg shadow-lg max-w-md w-full p-6 relative">
         <button
           onClick={() => setModalProduct(null)}
-          className="absolute top-1 right-1 z-50 bg-green-700 rounded-full p-1 shadow transition cursor-pointer"
+          className="absolute top-1 right-1 z-50 bg-green-700 hover:bg-red-800 rounded-full p-1 shadow transition cursor-pointer"
         >
           <X size={16} className="text-white" />
         </button>
