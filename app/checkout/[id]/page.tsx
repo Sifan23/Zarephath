@@ -1,10 +1,13 @@
+// app/checkout/[id]/page.tsx
 import CheckoutPage from "./CheckoutPage";
 
-export default async function Page({
+export default function Page({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 }) {
-  const { id } = await params;
-  return <CheckoutPage id={decodeURIComponent(id)} />;
+  // Decode the ID from the URL
+  const decodedId = decodeURIComponent(params.id);
+
+  return <CheckoutPage id={decodedId} />;
 }
