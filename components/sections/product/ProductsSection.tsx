@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   ShoppingCart,
   Star,
@@ -47,6 +47,10 @@ export default function ProductSection() {
     },
     slides: { perView: 1, spacing: 12 },
   });
+
+  useEffect(() => {
+    instanceRef.current?.update();
+  }, [filteredProducts]);
 
   return (
     <section id="products" className="bg-white py-20 px-6 md:px-10 lg:px-20">
