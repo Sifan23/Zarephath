@@ -222,11 +222,11 @@ export default function CheckoutForm({
             <SelectValue placeholder="Select Product" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="Delta Garri">Delta Garri</SelectItem>
-            <SelectItem value="Plantain Flour">Plantain Flour</SelectItem>
+            <SelectItem value="Unripe Plantain Flour">
+              Unripe Plantain Flour
+            </SelectItem>
             <SelectItem value="Red Palm Oil">Red Palm Oil</SelectItem>
-            <SelectItem value="Cassava Flour">Cassava Flour</SelectItem>
-            <SelectItem value="Red Beans">Red Beans</SelectItem>
+            <SelectItem value="Roasted Peanuts">Roasted Peanuts</SelectItem>
             <SelectItem value="Yellow and White Unsour Garri">
               Yellow and White Unsour Garri
             </SelectItem>
