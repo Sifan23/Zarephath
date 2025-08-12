@@ -57,7 +57,7 @@ export const allProducts = [
     price: ["₦1,500"],
     rating: 4.4,
     images: [
-      "/assets/products/roasted-peanuts.png",
+      "/assets/products/product-roasted-peanut.png",
       "/assets/products/roasted-peanuts-2.png",
     ],
     benefits:
