@@ -41,7 +41,7 @@ export const allProducts = [
     price: ["₦2,800"],
     rating: 4.3,
     images: [
-      "/assets/products/unsour-garri.png",
+      "/assets/products/product-delta-garri.png",
       "/assets/products/unsour-garri-2.png",
     ],
     benefits:
