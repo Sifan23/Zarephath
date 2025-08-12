@@ -32,17 +32,21 @@ export default function ProductSection() {
       ? allProducts
       : allProducts.filter((p) => p.category === selectedCategory);
 
+  const perViewDesktop = Math.min(3, filteredProducts.length);
+  const perViewTablet = Math.min(2, filteredProducts.length);
+
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
-    loop: true,
+    loop: false,
+    mode: "free",
     slideChanged(slider) {
       setCurrentSlide(slider.track.details.rel);
     },
     breakpoints: {
       "(min-width: 768px)": {
-        slides: { perView: 2, spacing: 16 },
+        slides: { perView: perViewTablet, spacing: 16 },
       },
       "(min-width: 1024px)": {
-        slides: { perView: 3, spacing: 20 },
+        slides: { perView: perViewDesktop, spacing: 20 },
       },
     },
     slides: { perView: 1, spacing: 12 },
@@ -75,9 +79,12 @@ export default function ProductSection() {
         />
 
         {/* Product Slider */}
-        <div ref={sliderRef} className="keen-slider">
+        <div
+          ref={sliderRef}
+          className={`keen-slider ${filteredProducts.length < 3 ? "justify-center" : ""}`}
+        >
           {filteredProducts.map((product) => (
-            <div key={product.id} className="keen-slider__slide">
+            <div key={product.id} className="keen-slider__slide max-w-[300px]">
               <ProductCard
                 product={product}
                 onClick={() => setModalProduct(product)}
