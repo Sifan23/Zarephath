@@ -20,6 +20,7 @@ interface CheckoutFormProps {
   setSelectedProduct: (value: string) => void;
   setShowThankYouModal: (value: boolean) => void;
   onGoBack: () => void;
+  initialQuantity?: string;
 }
 
 export default function CheckoutForm({
@@ -27,12 +28,13 @@ export default function CheckoutForm({
   setSelectedProduct,
   setShowThankYouModal,
   onGoBack,
+  initialQuantity = "",
 }: CheckoutFormProps) {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
-  const [quantity, setQuantity] = useState("");
+  const [quantity, setQuantity] = useState(initialQuantity);
   const [method, setMethod] = useState("");
   const [notes, setNotes] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -222,11 +224,12 @@ export default function CheckoutForm({
           <SelectContent>
             <SelectItem value="Delta Garri">Delta Garri</SelectItem>
             <SelectItem value="Plantain Flour">Plantain Flour</SelectItem>
-            <SelectItem value="Zarephath Palm Oil">
-              Zarephath Palm Oil
-            </SelectItem>
+            <SelectItem value="Red Palm Oil">Red Palm Oil</SelectItem>
             <SelectItem value="Cassava Flour">Cassava Flour</SelectItem>
             <SelectItem value="Red Beans">Red Beans</SelectItem>
+            <SelectItem value="Yellow and White Unsour Garri">
+              Yellow and White Unsour Garri
+            </SelectItem>
           </SelectContent>
         </Select>
       </div>
