@@ -251,7 +251,7 @@ export default function CheckoutForm({
         <Label htmlFor="address" className="pb-2">
           Delivery/Shipping Address
         </Label>
-        <Textarea
+        <Input
           id="address"
           value={address}
           onChange={(e) => setAddress(e.target.value)}
