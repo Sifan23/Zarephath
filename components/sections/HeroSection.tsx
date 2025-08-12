@@ -13,8 +13,8 @@ export default function HeroSection() {
       {/* Left Text */}
       <div className="w-full lg:w-1/2 z-10">
         <h1 className="text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight mb-6">
-          Freshly Processed Foods, <br className="hidden lg:block" />
-          Delivered with Care.
+          Freshly Processed Foods, Delivered <br className="hidden lg:block" />
+          with Care.
         </h1>
         <p className="text-gray-700 text-lg lg:text-xl mb-8 max-w-xl">
           At Pauline’s Food Processing, we bring you premium-quality, locally
