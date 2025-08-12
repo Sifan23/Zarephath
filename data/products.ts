@@ -1,20 +1,7 @@
 export const allProducts = [
   {
     id: 1,
-    name: "Delta Garri",
-    category: "Grains",
-    description:
-      "High-quality Garri, processed and packaged for freshness. 100% natural, no preservatives, locally sourced.",
-    price: "Le 50",
-    rating: 4.5,
-    images: [
-      "/assets/products/product-delta-garri.png",
-      "/assets/products/garri2.svg",
-    ],
-  },
-  {
-    id: 2,
-    name: "Plantain Flour",
+    name: "Unripe Plantain Flour",
     category: "Flours",
     description:
       "Made from 100% green plantains, gluten-free, high in dietary fiber, iron, and resistant starch. No preservatives, locally sourced.",
@@ -29,7 +16,7 @@ export const allProducts = [
       "Ideal for diabetic patients, aids digestion and blood sugar control.",
   },
   {
-    id: 3,
+    id: 2,
     name: "Red Palm Oil",
     category: "Oils",
     description:
@@ -45,27 +32,7 @@ export const allProducts = [
     benefits: "Supports heart health, enhances meal flavor and color.",
   },
   {
-    id: 4,
-    name: "Cassava Flour",
-    category: "Flours",
-    description:
-      "Smooth cassava flour, ideal for baking and cooking. 100% natural, no preservatives, locally sourced.",
-    price: "Le 40",
-    rating: 4,
-    images: ["/assets/products/cassava-flour.svg"],
-  },
-  {
-    id: 5,
-    name: "Red Beans",
-    category: "Grains",
-    description:
-      "Premium local red beans, rich in protein. 100% natural, no preservatives, locally sourced.",
-    price: "Le 45",
-    rating: 4.2,
-    images: ["/assets/products/red-beans.svg"],
-  },
-  {
-    id: 6,
+    id: 3,
     name: "Yellow and White Unsour Garri",
     category: "Grains",
     description:
@@ -81,7 +48,7 @@ export const allProducts = [
       "High energy content, fortified with palm oil for added nutrition.",
   },
   {
-    id: 7,
+    id: 4,
     name: "Roasted Peanuts",
     category: "Snacks",
     description:
