@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import Image from "next/image";
 import { useKeenSlider } from "keen-slider/react";
@@ -8,27 +8,30 @@ import { useEffect, useState } from "react";
 const testimonials = [
   {
     id: 1,
-    name: "Grace Kamara",
-    location: "Bo, Sierra Leone",
-    image: "/assets/testimonials/grace.png", // Placeholder
-    rating: 5,
-    quote: "Zarephath has transformed how I access natural food products. Their palm oil and garri are the best I’ve ever had!",
+    name: "Emeka Okoro",
+    location: "Lagos, Nigeria",
+    image: "/assets/testimonials/testimonial-one.png",
+    rating: 4,
+    quote:
+      "Excellent quality and prompt delivery! I highly recommend Zarephath to anyone who values fresh, local food.",
   },
   {
     id: 2,
-    name: "Emeka Okoro",
-    location: "Enugu, Nigeria",
-    image: "/assets/testimonials/emeka.png",
-    rating: 4,
-    quote: "Excellent quality and prompt delivery! I highly recommend Zarephath to anyone who values fresh, local food.",
+    name: "Grace Kamara",
+    location: "Addis Ababa, Ethiopia",
+    image: "/assets/testimonials/testimonial-three.png", // Placeholder
+    rating: 5,
+    quote:
+      "Zarephath has transformed how I access natural food products. Their palm oil and garri are the best I’ve ever had!",
   },
   {
     id: 3,
-    name: "Fatmata Sesay",
+    name: "John Sesay",
     location: "Freetown, Sierra Leone",
-    image: "/assets/testimonials/fatmata.png",
+    image: "/assets/testimonials/testimonial-two.png",
     rating: 5,
-    quote: "I love the variety and how natural everything is. It’s like buying straight from the village market!",
+    quote:
+      "I love the variety and how natural everything is. It’s like buying straight from the village market!",
   },
 ];
 
@@ -51,12 +54,19 @@ export default function TestimonialSection() {
   });
 
   return (
-    <section id="testimonials" className="bg-white py-20 px-6 md:px-10 lg:px-20">
+    <section
+      id="testimonials"
+      className="bg-white py-20 px-6 md:px-10 lg:px-20"
+    >
       <div className="max-w-6xl mx-auto text-center">
         {/* Heading */}
-        <h2 className="text-3xl md:text-4xl font-bold text-green-800">Testimonials</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-green-800">
+          Testimonials
+        </h2>
         <p className="mt-3 text-gray-600 max-w-2xl mx-auto text-sm md:text-base">
-          From families to food vendors, people across West Africa love our products for their quality, freshness, and trust. Real stories from people who trust and love our products.
+          From families to food vendors, people across West Africa love our
+          products for their quality, freshness, and trust. Real stories from
+          people who trust and love our products.
         </p>
 
         {/* Slider */}
@@ -79,7 +89,9 @@ export default function TestimonialSection() {
 
               {/* Name & Location */}
               <div className="text-center mt-6">
-                <h4 className="text-lg font-semibold text-[#103E13]">{testimonial.name}</h4>
+                <h4 className="text-lg font-semibold text-[#103E13]">
+                  {testimonial.name}
+                </h4>
                 <p className="text-sm text-gray-500">{testimonial.location}</p>
 
                 {/* Star Rating */}
@@ -107,9 +119,7 @@ export default function TestimonialSection() {
               key={idx}
               onClick={() => instanceRef.current?.moveToIdx(idx)}
               className={`h-2 w-2 rounded-full transition-all duration-300 ${
-                currentSlide === idx
-                  ? "bg-green-800 scale-125"
-                  : "bg-green-300"
+                currentSlide === idx ? "bg-green-800 scale-125" : "bg-green-300"
               }`}
             ></button>
           ))}
