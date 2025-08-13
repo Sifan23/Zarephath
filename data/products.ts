@@ -10,7 +10,7 @@ export const allProducts = [
     rating: 4,
     images: [
       "/assets/products/product-plantain-flour.png",
-      "/assets/products/product-plantain-flour-2.png",
+      "/assets/products/product-plantain-flour-two.png",
     ],
     benefits:
       "Ideal for diabetic patients, aids digestion and blood sugar control.",
@@ -26,8 +26,8 @@ export const allProducts = [
     rating: 5,
     images: [
       "/assets/products/product-palm-oil.png",
-      "/assets/products/product-palm-oil-2.png",
-      "/assets/products/product-palm-oil-3.png",
+      "/assets/products/product-palm-oil-two.png",
+      "/assets/products/product-palm-oil-three.png",
     ],
     benefits: "Supports heart health, enhances meal flavor and color.",
   },
@@ -40,10 +40,7 @@ export const allProducts = [
     size: ["4kg"],
     price: ["₦2,800"],
     rating: 4.3,
-    images: [
-      "/assets/products/product-delta-garri.png",
-      "/assets/products/unsour-garri-2.png",
-    ],
+    images: ["/assets/products/product-delta-garri.png"],
     benefits:
       "High energy content, fortified with palm oil for added nutrition.",
   },
@@ -56,10 +53,7 @@ export const allProducts = [
     size: ["500g"],
     price: ["₦1,500"],
     rating: 4.4,
-    images: [
-      "/assets/products/product-roasted-peanut.png",
-      "/assets/products/roasted-peanuts-2.png",
-    ],
+    images: ["/assets/products/product-roasted-peanut.png"],
     benefits:
       "High in protein and healthy fats, great for snacking and culinary uses.",
   },
