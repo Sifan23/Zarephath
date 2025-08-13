@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   ShoppingCart,
   Star,
@@ -23,20 +23,22 @@ import { Product } from "@/types/index";
 
 export default function ProductSection() {
   const [modalProduct, setModalProduct] = useState<Product | null>(null);
-  const [imageIndex, setImageIndex] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState("All");
 
+  // Filter products by selected category
   const filteredProducts =
     selectedCategory === "All"
       ? allProducts
       : allProducts.filter((p) => p.category === selectedCategory);
 
+  // Determine slides per view based on filtered products
   const perViewDesktop = Math.min(3, filteredProducts.length);
   const perViewTablet = Math.min(2, filteredProducts.length);
 
+  // Initialize Keen Slider
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
-    loop: false,
+    loop: true,
     mode: "free",
     slideChanged(slider) {
       setCurrentSlide(slider.track.details.rel);
@@ -51,10 +53,6 @@ export default function ProductSection() {
     },
     slides: { perView: 1, spacing: 12 },
   });
-
-  useEffect(() => {
-    instanceRef.current?.update();
-  }, [filteredProducts]);
 
   return (
     <section id="products" className="bg-white py-20 px-6 md:px-10 lg:px-20">
@@ -80,6 +78,7 @@ export default function ProductSection() {
 
         {/* Product Slider */}
         <div
+          key={`${selectedCategory}-${perViewDesktop}-${perViewTablet}`}
           ref={sliderRef}
           className={`keen-slider ${filteredProducts.length < 3 ? "justify-center" : ""}`}
         >
