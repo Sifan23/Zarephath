@@ -157,9 +157,24 @@ export default function CheckoutForm({
   };
 
   const handleWhatsAppOrder = () => {
-    const message = `Hello Zarephath Team! 👋\n\nI'd like to place an order:\n\n🛒 *Product*: ${selectedProduct}\n📦 *Quantity/Size*: ${quantity}\n🚚 *Delivery Method*: ${method}\n📍 *Address*: ${address}\n📞 *Phone*: ${phone}\n📧 *Email*: ${email}\n🧑 *Name*: ${fullName}\n📝 *Notes*: ${notes || "None"}\n\nThank you! 🙏`;
+    if (!validateForm()) return; // use your existing validation
+
+    const message = `Hello Zarephath Team! 👋
+
+I'd like to place an order:
+
+🛒 *Product*: ${selectedProduct}
+📦 *Quantity/Size*: ${quantity}
+🚚 *Delivery Method*: ${method}
+📍 *Address*: ${address}
+📞 *Phone*: ${phone}
+📧 *Email*: ${email}
+🧑 *Name*: ${fullName}
+📝 *Notes*: ${notes || "None"}
+
+Thank you! 🙏`;
+
     const whatsappUrl = `https://wa.me/23276877246?text=${encodeURIComponent(message)}`;
-    console.log("Opening WhatsApp URL:", whatsappUrl);
     window.open(whatsappUrl, "_blank");
   };
 
