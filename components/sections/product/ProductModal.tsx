@@ -42,7 +42,7 @@ const ProductModal = ({
             src={modalProduct.images[imageIndex]}
             alt={modalProduct.name}
             fill
-            className="rounded object-cover"
+            className="rounded object-contain"
           />
           {modalProduct.images.length > 1 && (
             <>
