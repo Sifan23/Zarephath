@@ -193,12 +193,12 @@ export default function ContactSection() {
                 zarephathnigerialimited@gmail.com
               </div>
               <div>
-                <span className="font-medium">Phone:</span> +234 8 037594488
+                <span className="font-medium">Phone:</span> 234 8037594488 / 234 8052880870 / +19082597100
               </div>
               <div>
                 <span className="font-medium">Address:</span>
                 <br />
-                123 Natural Foods Road,
+                107 Obi Oputah Rd Ndokwa East. Delta state,
                 <br />
                 Lagos, Nigeria
               </div>

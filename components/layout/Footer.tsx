@@ -1,6 +1,6 @@
 'use client';
 
-import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn } from 'react-icons/fa';
+import { FaFacebookF, FaInstagram, FaTiktok } from 'react-icons/fa';
 
 export default function Footer() {
   return (
@@ -30,21 +30,21 @@ export default function Footer() {
         <div>
           <h3 className="text-xl font-semibold mb-3">Contact</h3>
           <p className="text-sm text-gray-300">Email: zarephathnigerialimited@gmail.com</p>
-          <p className="text-sm text-gray-300">Phone: +234 80 37594488</p>
+          <p className="text-sm text-gray-300">Phone: 234 8037594488 / 234 8052880870 / +19082597100</p>
 
           <div className="flex space-x-4 mt-4">
-            <a href="#" className="hover:text-green-400" aria-label="Facebook">
+            <a href="https://www.facebook.com/profile.php?id=100044947973602" className="hover:text-green-400" aria-label="Facebook">
               <FaFacebookF />
             </a>
-            <a href="#" className="hover:text-green-400" aria-label="Instagram">
+            <a href="https://www.instagram.com/zarephathfoods?igsh=MXRrMGV4bG9qb2I2cQ==" className="hover:text-green-400" aria-label="Instagram">
               <FaInstagram />
             </a>
-            <a href="#" className="hover:text-green-400" aria-label="Twitter">
-              <FaTwitter />
+            <a href="https://www.tiktok.com/@zarephath.nigeria?_t=ZM-8z0WdNdV6S0&_r=1" className="hover:text-green-400" aria-label="TikTok">
+              <FaTiktok />
             </a>
-            <a href="#" className="hover:text-green-400" aria-label="LinkedIn">
+            {/*<a href="#" className="hover:text-green-400" aria-label="LinkedIn">
               <FaLinkedinIn />
-            </a>
+            </a>*/}
           </div>
         </div>
       </div>
