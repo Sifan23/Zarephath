@@ -5,12 +5,13 @@ export const allProducts = [
     category: "Flours",
     description:
       "Made from 100% green plantains, gluten-free, high in dietary fiber, iron, and resistant starch. No preservatives, locally sourced.",
-    size: ["500g", "1kg"],
-    price: ["₦1,200", "₦2,200"],
+    size: ["500g", "1kg", "2kg"],
+    price: ["₦1,200", "₦2,200", "₦4,200"],
     rating: 4,
     images: [
       "/assets/products/product-plantain-flour.png",
-      "/assets/products/product-plantain-flour-two.png",
+      "/assets/products/product-plantain-flour-two.jpeg",
+      "/assets/products/product-plantain-flour-three.jpeg",
     ],
     benefits:
       "Ideal for diabetic patients, aids digestion and blood sugar control.",
@@ -25,9 +26,9 @@ export const allProducts = [
     price: ["₦1,800", "₦3,500", "₦6,800"],
     rating: 5,
     images: [
-      "/assets/products/product-palm-oil.png",
-      "/assets/products/product-palm-oil-two.png",
-      "/assets/products/product-palm-oil-three.png",
+      "/assets/products/product-palm-oil.jpeg",
+      "/assets/products/product-palm-oil-two.jpeg",
+      "/assets/products/product-palm-oil-three.jpeg",
     ],
     benefits: "Supports heart health, enhances meal flavor and color.",
   },
@@ -40,7 +41,7 @@ export const allProducts = [
     size: ["4kg"],
     price: ["₦2,800"],
     rating: 4.3,
-    images: ["/assets/products/product-delta-garri.png"],
+    images: ["/assets/products/product-delta-garri.jpeg"],
     benefits:
       "High energy content, fortified with palm oil for added nutrition.",
   },
