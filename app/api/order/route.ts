@@ -53,7 +53,7 @@ export async function POST(req: Request) {
     // sending email
     await resend.emails.send({
       from: "onboarding@resend.dev",
-      to: "essentialandthe1only@gmail.com",
+      to: "zarephathfoods07@gmail.com",
       subject: "New Order Received",
       html: `
       <h3>New Order</h3>
