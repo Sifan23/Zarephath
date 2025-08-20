@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { MdPlayCircle, MdClose } from "react-icons/md";
 
 const About = () => {
@@ -32,32 +33,36 @@ const About = () => {
             About Us
           </h3>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            Rooted in Tradition, Driven by Quality
+            Rooted in Tradition, <br className="hidden md:block" />
+            Driven by Quality
           </h2>
           <p className="text-gray-800 mb-4 leading-relaxed">
-            Pauline Keguna Okorie is the founder of Zarephath Nigeria Limited,
-            established on October 20, 2020 and registered with the Corporate
-            Affairs Commission of Nigeria. Zarephath operates in the
-            agricultural value chain by off-taking agricultural products from
-            smallholder farmers. These products are processed with modern
-            technology, preserved, packaged, and distributed to both B2B
-            customers and direct consumers.
+            Zarephath Nigeria Ltd is an innovative agribusiness venture focused
+            on producing natural, unadulterated food products to promote
+            consumer health and wellness. Founded by Pauline Okorie, the company
+            is guided by a clear vision: to be a leading African brand known for
+            delivering natural, healthy, and preservative-free food products
+            that promote wellness and prevent lifestyle-related illnesses, both
+            locally and globally.
           </p>
           <p className="text-gray-800 mb-8 leading-relaxed">
-            Mr. Akinlembo Agbetoyin joined the company as a partner in 2023. The
-            major products of the company are unripe plantain flour, Delta
-            yellow garri, and red palm oil. These products are sourced from its
-            own farm and from other farmers in the South-South region of
-            Nigeria. Our products are of premium quality and grown naturally by
-            trusted farmers.
+            Its mission is equally compelling: to produce, package, and
+            distribute high-quality, unadulterated food products sourced from
+            sustainable agriculture, ensuring every household, at home and
+            abroad, has access to nutritious, safe, and naturally processed
+            food.
             {showMore && (
               <>
+                {" "}
                 <br />
-                With a focus on sustainability, innovation, and quality,
-                Zarephath continues to build strong relationships with
-                smallholder farmers and deliver safe, nutritious, and natural
-                food products to households and businesses both locally and
-                globally.
+                The Vision of the organization is also supported by an astute
+                investor, shareholder, and advisor Mr. Agbetoyin, who believes
+                in healthy living and good manufacturing practices.
+                <br />
+                Operating from Lagos, Nigeria, Zarephath specializes in the
+                processing and packaging of unripe plantain flour, red palm oil,
+                yellow and white garri, and roasted peanuts—sourced from farmers
+                who adhere to sustainable agricultural practices.
               </>
             )}
           </p>
