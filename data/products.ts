@@ -10,8 +10,8 @@ export const allProducts = [
     rating: 4,
     images: [
       "/assets/products/product-plantain-flour.png",
-      "/assets/products/product-plantain-flour-two.jpeg",
-      "/assets/products/product-plantain-flour-three.jpeg",
+      "/assets/products/product-plantain-flour-two-white.png",
+      "/assets/products/product-plantain-flour-three-white.png",
     ],
     benefits:
       "Ideal for diabetic patients, aids digestion and blood sugar control.",
@@ -22,13 +22,13 @@ export const allProducts = [
     category: "Oils",
     description:
       "Unrefined, locally sourced red palm oil, filtered for impurities, rich in antioxidants (Vitamin E, beta-carotene). No additives.",
-    size: ["1L", "2L", "4L"],
+    size: ["1L", "2L", "5L"],
     price: ["₦1,800", "₦3,500", "₦6,800"],
     rating: 5,
     images: [
       "/assets/products/product-palm-oil.jpeg",
       "/assets/products/product-palm-oil-two.jpeg",
-      "/assets/products/product-palm-oil-three.jpeg",
+      "/assets/products/product-palm-oil-three-white.png",
     ],
     benefits: "Supports heart health, enhances meal flavor and color.",
   },
@@ -41,7 +41,7 @@ export const allProducts = [
     size: ["4kg"],
     price: ["₦2,800"],
     rating: 4.3,
-    images: ["/assets/products/product-delta-garri.jpeg"],
+    images: ["/assets/products/product-delta-garri-white.png"],
     benefits:
       "High energy content, fortified with palm oil for added nutrition.",
   },
