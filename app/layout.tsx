@@ -14,7 +14,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Zarephath | Freshly Processed Foods, Delivered with Care",
+  title: {
+    default: "Zarephath Nigerian Limited",
+    template: "%s - Zarephath Nigerian Limited"
+  },
   description:
     "Zarephath is a certified Nigerian food processing company delivering NAFDAC & FDA-approved, high-quality products across Africa and beyond. Rooted in tradition and powered by technology, we prioritize health, hygiene, and excellence.",
   icons: {

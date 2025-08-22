@@ -1,5 +1,10 @@
 // app/checkout/[id]/page.tsx
 import CheckoutPage from "./CheckoutPage";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "CheckoutPage"
+}
 
 export default function Page({
   params,
