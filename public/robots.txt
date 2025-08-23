@@ -1,0 +1,14 @@
+# *
+User-agent: *
+Allow: /
+
+# *
+User-agent: *
+Disallow: /admin
+Disallow: /private
+
+# Host
+Host: https://www.zarephathnigeria.com
+
+# Sitemaps
+Sitemap: https://www.zarephathnigeria.com/sitemap.xml
