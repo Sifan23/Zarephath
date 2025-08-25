@@ -1,18 +1,17 @@
-// app/checkout/[id]/page.tsx
 import CheckoutPage from "./CheckoutPage";
-import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "CheckoutPage"
-}
+// Metadata as plain object
+export const metadata = {
+  title: "CheckoutPage",
+};
 
-export default function Page({
+// Next.js types think params is a Promise, so we make Page async
+export default async function Page({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  // Decode the ID from the URL
-  const decodedId = decodeURIComponent(params.id);
-
+  const { id } = await params;
+  const decodedId = decodeURIComponent(id);
   return <CheckoutPage id={decodedId} />;
 }
