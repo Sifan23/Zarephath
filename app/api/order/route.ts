@@ -71,8 +71,13 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ success: true });
-  } catch (err: any) {
-    console.error("❌ Route crashed:", err.message);
+  } catch (err: unknown) {
+  console.error("❌ Route crashed:", err);
+
+  if (err instanceof Error) {
     return NextResponse.json({ error: err.message }, { status: 500 });
   }
+
+  return NextResponse.json({ error: "Unknown error occurred" }, { status: 500 });
+}
 }
