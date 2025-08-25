@@ -5,8 +5,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: ["/"],
-      disallow: ["/private/"], // if there is a  private pages
+      disallow: ["/private/"], // adjust if you have real private routes
     },
-    sitemap: "https://www.zarephath.com/sitemap.xml",
+    sitemap: "https://zarephath.com/sitemap.xml",
   };
 }
