@@ -15,33 +15,37 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://yourdomain.com"), // 🔴  domain
+  metadataBase: new URL("https://zarephath-shop.vercel.app"), 
   title: {
     default: "Zarephath Nigerian Limited",
     template: "%s | Zarephath Nigerian Limited",
   },
   description:
-    "Zarephath is a certified Nigerian food processing company delivering NAFDAC & FDA-approved, high-quality products across Africa and beyond. Rooted in tradition and powered by technology, we prioritize health, hygiene, and excellence.",
+    "Zarephath Nigerian Limited is a certified agribusiness company in Lagos, Nigeria, producing preservative-free foods like plantain flour, red palm oil, garri, and roasted peanuts. NAFDAC-compliant, export-ready, and trusted across Africa and beyond.",
   keywords: [
     "Zarephath",
     "Nigerian food company",
+    "African agribusiness",
+    "plantain flour Nigeria",
+    "red palm oil",
+    "garri Nigeria",
+    "roasted peanuts",
     "NAFDAC certified",
-    "FDA approved",
-    "food processing Africa",
-    "healthy food Nigeria",
+    "healthy foods Africa",
+    "export-ready food products",
   ],
   openGraph: {
     title: "Zarephath Nigerian Limited",
     description:
-      "Certified Nigerian food processing company with NAFDAC & FDA approval, delivering trusted products across Africa.",
-    url: "https://yourdomain.com",
+      "Zarephath Nigerian Limited produces natural, preservative-free foods including unripe plantain flour, red palm oil, garri, and roasted peanuts. Trusted in Nigeria and beyond.",
+    url: "https://zarephath-shop.vercel.app",
     siteName: "Zarephath Nigerian Limited",
     images: [
       {
-        url: "/seo-banner.png", // 🔴 banner image
+        url: "/seo-banner.png", // 👈 we’ll create this
         width: 1200,
         height: 630,
-        alt: "Zarephath Nigerian Limited - Food Processing",
+        alt: "Zarephath Nigerian Limited - Natural Nigerian Food Products",
       },
     ],
     locale: "en_US",
@@ -51,13 +55,14 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Zarephath Nigerian Limited",
     description:
-      "NAFDAC & FDA-certified Nigerian food processing company delivering excellence.",
+      "Export-ready Nigerian food company producing plantain flour, palm oil, garri, and roasted peanuts.",
     images: ["/seo-banner.png"],
   },
   icons: {
     icon: "/logo.svg",
   },
 };
+
 
 export default function RootLayout({
   children,
