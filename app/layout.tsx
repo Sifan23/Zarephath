@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../styles/globals.css";
 import { Toaster } from "@/components/ui/sonner";
+import { allProducts } from "@/data/products";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -88,40 +89,69 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+const orgSchema = {
+    "@type": "Organization",
+    "@id": "https://zarephathfood.vercel.app/#organization",
+    name: "Zarephath Nigerian Limited",
+    url: "https://zarephathfood.vercel.app",
+    logo: "https://zarephathfood.vercel.app/logo.svg",
+    description:
+      "Zarephath Nigerian Limited is a certified agribusiness company in Lagos, Nigeria, producing preservative-free foods like plantain flour, red palm oil, garri, and roasted peanuts.",
+    sameAs: [
+      "https://www.facebook.com/profile.php?id=100044947973602",
+      "https://www.instagram.com/zarephathfoods?igsh=MXRrMGV4bG9qb2I2cQ==",
+      "https://www.tiktok.com/@zarephath.nigeria?_t=ZM-8z0WdNdV6S0&_r=1",
+    ],
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+234 8037594488",
+      contactType: "customer service",
+      areaServed: "NG",
+      availableLanguage: ["English"],
+    },
+  };
+
+  const productSchemas = allProducts.map((p) => ({
+    "@type": "Product",
+    name: p.name,
+    image: p.images.map(
+      (img) => `https://zarephathfood.vercel.app${img}`
+    ),
+    description: p.description,
+    brand: {
+      "@type": "Brand",
+      name: "Zarephath Nigerian Limited",
+    },
+    offers: {
+      "@type": "Offer",
+      url: `https://zarephathfood.vercel.app/products/${p.id}`, // adjust if you use slugs
+      priceCurrency: "NGN",
+      price: p.price[0].replace(/[₦,]/g, ""), // take first price & strip ₦, commas
+      availability: "https://schema.org/InStock",
+    },
+    aggregateRating: p.rating
+      ? {
+          "@type": "AggregateRating",
+          ratingValue: p.rating,
+          reviewCount: 20, // you can adjust if you have real reviews
+        }
+      : undefined,
+  }));
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [orgSchema, ...productSchemas],
+  };
   return (
     <html lang="en">
       <head>
-        {/* ✅ JSON-LD Structured Data for Organization */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "Zarephath Nigerian Limited",
-              url: "https://zarephathfood.vercel.app",
-              logo: "https://zarephathfood.vercel.app/logo.svg",
-              description:
-                "Zarephath Nigerian Limited is a certified agribusiness company in Lagos, Nigeria, producing preservative-free foods like plantain flour, red palm oil, garri, and roasted peanuts.",
-              sameAs: [
-                "https://www.facebook.com/yourpage",
-                "https://www.instagram.com/yourpage",
-                "https://twitter.com/yourpage",
-              ],
-              contactPoint: {
-                "@type": "ContactPoint",
-                telephone: "+234XXXXXXXXXX",
-                contactType: "customer service",
-                areaServed: "NG",
-                availableLanguage: ["English"],
-              },
-            }),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body>
         {children}
-        <Toaster />
       </body>
     </html>
   );
