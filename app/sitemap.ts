@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { allProducts } from "@/data/products"; 
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://zarephath-shop.vercel.app";
+  const baseUrl = "https://zarephathfood.vercel.app";
 
   const staticPages: MetadataRoute.Sitemap = [
     {

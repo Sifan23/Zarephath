@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://zarephath-shop.vercel.app"), 
+  metadataBase: new URL("https://zarephathfood.vercel.app"), 
   title: {
     default: "Zarephath Nigerian Limited",
     template: "%s | Zarephath Nigerian Limited",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     title: "Zarephath Nigerian Limited",
     description:
       "Zarephath Nigerian Limited produces natural, preservative-free foods including unripe plantain flour, red palm oil, garri, and roasted peanuts. Trusted in Nigeria and beyond.",
-    url: "https://zarephath-shop.vercel.app",
+    url: "https://zarephathfood.vercel.app",
     siteName: "Zarephath Nigerian Limited",
     images: [
       {
